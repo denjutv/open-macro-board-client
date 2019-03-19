@@ -4,10 +4,11 @@
   "description": "Client for the Open Macro Board",
   "main": "src/index.js",
   "scripts": {
-    "build": "npm run build:frontend",
-    "build:frontend": "webpack --config ./render/webpack.config.js",
+    "build": "webpack --config ./render/webpack.config.js",
+    "build:watch": "npm run build -- --watch",
     "start": "electron ./main/src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm-run-all --parallel build:watch start"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,9 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "electron-reload": "^1.4.0",
     "html-webpack-plugin": "^3.2.0",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
