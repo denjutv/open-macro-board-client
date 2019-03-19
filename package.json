@@ -1,0 +1,46 @@
+{
+  "name": "open-macro-board-client",
+  "version": "1.0.0",
+  "description": "Client for the Open Macro Board",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "npm run build:frontend",
+    "build:frontend": "webpack --config ./render/webpack.config.js",
+    "start": "electron ./main/src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denjutv/open-macro-board-client.git"
+  },
+  "keywords": [
+    "open",
+    "macro",
+    "board",
+    "client"
+  ],
+  "author": "denjutv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denjutv/open-macro-board-client/issues"
+  },
+  "homepage": "https://github.com/denjutv/open-macro-board-client#readme",
+  "dependencies": {
+    "configstore": "^4.0.0",
+    "electron": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
