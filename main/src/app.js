@@ -15,13 +15,7 @@ class App
         // init config
         this.initConfig();
 
-        console.log( this.app.getAppPath() );
-
-        
-        if( this.conf.get( "enableLiveReload" ) )
-        {
-            this.initWatcher();
-        }
+        // console.log( this.app.getAppPath() );
 
         // init redux store
         // this.initStore();
@@ -48,13 +42,6 @@ class App
  
         // create a Configstore instance with an unique ID and default values
         this.conf = new Configstore( "open-macro-board-client", defaultConfig);
-    }
-
-    initWatcher()
-    {
-        const path = require( "path" );
-
-        require( "electron-reload" )( path.join( __dirname, "..", "..", "render", "dist" ) );
     }
 
     // initStore()

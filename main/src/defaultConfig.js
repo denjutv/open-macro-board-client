@@ -6,6 +6,5 @@ module.exports =
         height: 480,
         fullscreen: false
     },
-    showDevTools: true,
-    enableLiveReload: true
+    showDevTools: true
 };
