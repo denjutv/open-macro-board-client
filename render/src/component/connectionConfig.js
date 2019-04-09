@@ -20,6 +20,11 @@ function ConnectionConfig( props )
             </div>
 
             <div>
+                <label htmlFor="port">Port</label>
+                <input type="text" name="port" id="port" value={props.currentConnection.port} onChange={props.updateConnection} />
+            </div>
+
+            <div>
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" value={props.currentConnection.passwort} onChange={props.updateConnection} />
             </div>

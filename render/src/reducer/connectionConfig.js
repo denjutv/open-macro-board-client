@@ -8,6 +8,7 @@ const defaultState = {
 const emptyConnection = {
     name: "",
     host: "",
+    port: "3000",
     password: "",
     passwordRepeat: ""
 };
