@@ -19,6 +19,7 @@ export const updateConfigConnection = ( fieldName, value ) =>
 }
 
 export const CONFIG_CONNECTION_SAVE = "CONFIG_CONNECTION_SAVE";
+export const CONFIG_CONNECTION_SAVE_SUCCESS = "CONFIG_CONNECTION_SAVE_SUCCESS";
 
 export const saveCurrentConnection = ( currentConnection ) =>
 {

@@ -27,7 +27,8 @@
   "homepage": "https://github.com/denjutv/open-macro-board-client#readme",
   "dependencies": {
     "configstore": "^4.0.0",
-    "electron": "^4.1.0"
+    "electron": "^4.1.0",
+    "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
