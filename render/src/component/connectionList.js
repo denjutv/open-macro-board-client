@@ -8,9 +8,14 @@ function ConnectionList(props)
             <div>
                 {
                     props.connections.map( connection =>
-                    (
-                        <div key={connection.name}>{connection.name}</div>
-                    ) )
+                    {
+                        return (
+                        <div key={connection.name}>
+                            {connection.name}<br />
+                            {connection.host}:{connection.port}<br />
+                            { ((connection.socket && connection.socket.connected) ? "connected" : "not connected") }
+                        </div>
+                    )} )
                 }
                 <button onClick={props.openNewConnection}>+</button>
             </div>
