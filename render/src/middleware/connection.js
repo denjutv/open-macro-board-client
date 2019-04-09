@@ -16,12 +16,7 @@ const buttonMiddleware = ( { getState, dispatch } ) =>
         {
             case CONFIG_CONNECTION_SAVE:
                 socket = createConnection( action.currentConnection, dispatch );
-
-                newAction = {...action};
-                newAction.type = CONFIG_CONNECTION_SAVE_SUCCESS;
-                newAction.currentConnection.socket = socket;
-                
-                result = next( newAction );
+                result = null;
             break;
             default:
                 result = next( action );
@@ -36,6 +31,15 @@ function createConnection( connectionData, dispatch )
 
     socket.on( "action", ( action ) =>
     {
+        dispatch( action );
+    });
+
+    socket.on( "connect", ( ) =>
+    {
+        let action = {};
+        action.type = CONFIG_CONNECTION_SAVE_SUCCESS;
+        action.currentConnection = Object.assign( {}, connectionData );
+        action.currentConnection.socket = socket;
         dispatch( action );
     });
 
