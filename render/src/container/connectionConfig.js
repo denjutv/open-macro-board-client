@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ConnectionConfig from "../component/connectionConfig";
-import { updateConfigConnection } from "../action/";
+import { updateConfigConnection, saveCurrentConnection } from "../action/";
 
 const mapStateToProps = ( state, ownProps ) =>
 ({
@@ -9,7 +9,8 @@ const mapStateToProps = ( state, ownProps ) =>
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
-    updateConnection: event => dispatch( updateConfigConnection( event.target.name, event.target.value ) )
+    updateConnection: event => dispatch( updateConfigConnection( event.target.name, event.target.value ) ),
+    saveCurrentConnection: currentConnection => dispatch( saveCurrentConnection( Object.assign( {}, currentConnection ) ) )
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )( ConnectionConfig );

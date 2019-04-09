@@ -29,7 +29,7 @@ function ConnectionConfig( props )
                 <input type="password" name="passwordRepeat" id="passwordRepeat" value={props.currentConnection.passwortRepeat} onChange={props.updateConnection} />
             </div>
 
-            <button>save</button>
+            <button onClick={props.saveCurrentConnection.bind( null, props.currentConnection )}>save</button>
         </div>
     )
 }

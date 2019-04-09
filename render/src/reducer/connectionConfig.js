@@ -1,4 +1,4 @@
-import { CONFIG_OPEN_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE } from "../action/";
+import { CONFIG_OPEN_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE, CONFIG_CONNECTION_SAVE } from "../action/";
 
 
 const defaultState = {
@@ -30,6 +30,9 @@ const connectionConfigReducer = ( state = defaultState, action ) =>
         case CONFIG_CONNECTION_UPDATE:
             newState = {...state, currentConnection: {...state.currentConnection } };
             newState.currentConnection[action.fieldName] = action.value;
+        break;
+        case CONFIG_CONNECTION_SAVE:
+            newState = {...state, currentConnection: null };
         break;
     }
 

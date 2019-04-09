@@ -1,4 +1,4 @@
-
+import { CONFIG_CONNECTION_SAVE } from "../action/";
 /**
  * Handles all events, that change the buttons.
  * 
@@ -7,14 +7,17 @@
  */
 const connectionReducer = ( state = [], action ) =>
 {
-    // switch( action.type )
-    // {
-    //     case DELIVER_BUTTON_SETTINGS:
-    //         state = action.buttons;
-    //     break;
-    // }
+    let newState = state;
 
-    return state;
+    switch( action.type )
+    {
+        case CONFIG_CONNECTION_SAVE:
+            newState = state.slice();
+            newState.push( action.currentConnection );
+        break;
+    }
+
+    return newState;
 };
 
 export default connectionReducer;

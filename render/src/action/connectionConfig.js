@@ -17,3 +17,13 @@ export const updateConfigConnection = ( fieldName, value ) =>
         value
     }
 }
+
+export const CONFIG_CONNECTION_SAVE = "CONFIG_CONNECTION_SAVE";
+
+export const saveCurrentConnection = ( currentConnection ) =>
+{
+    return {
+        type: CONFIG_CONNECTION_SAVE,
+        currentConnection
+    }
+}

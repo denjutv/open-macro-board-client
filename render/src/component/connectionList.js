@@ -9,7 +9,7 @@ function ConnectionList(props)
                 {
                     props.connections.map( connection =>
                     (
-                        <div>connection</div>
+                        <div key={connection.name}>{connection.name}</div>
                     ) )
                 }
                 <button onClick={props.openNewConnection}>+</button>
