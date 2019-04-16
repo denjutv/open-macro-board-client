@@ -18,7 +18,7 @@ class App
         // console.log( this.app.getAppPath() );
 
         // init redux store
-        // this.initStore();
+        this.initStore();
 
         // create window
         this.initMainWindow();
@@ -32,7 +32,7 @@ class App
         });
 
         // ipc
-        // this.initIpc();
+        this.initIpc();
     }
 
     initConfig()
@@ -44,14 +44,14 @@ class App
         this.conf = new Configstore( "open-macro-board-client", defaultConfig);
     }
 
-    // initStore()
-    // {
-    //     const { createStore, applyMiddleware } = require( "redux" );
-    //     const rootReducer = require( "./reducer" );
-    //     const buttonMiddleare = require( "./middleware/redux/button" );
-    //     const initialState = {buttons: this.conf.get("buttons")};
-    //     this.store = createStore( rootReducer, initialState, applyMiddleware( buttonMiddleare ) );
-    // }
+    initStore()
+    {
+        const { createStore, applyMiddleware } = require( "redux" );
+        const rootReducer = require( "./reducer" );
+        const connectionMiddleware = require( "./middleware/redux/connection" );
+        // const initialState = {buttons: this.conf.get("buttons")};
+        this.store = createStore( rootReducer, /*initialState ,*/ applyMiddleware( connectionMiddleware )  );
+    }
 
     initMainWindow()
     {
@@ -66,17 +66,17 @@ class App
         });
     }
 
-    // initIpc()
-    // {
-    //     const { ipcMain } = require( "electron" );
-    //     const { MAIN_RENDER_CHANNEL } = require( "../../shared/channel" );
+    initIpc()
+    {
+        const { ipcMain } = require( "electron" );
+        const { MAIN_RENDER_CHANNEL } = require( "../../shared/channel" );
 
-    //     // handle ipc message by dispatching them to the store
-    //     ipcMain.on( MAIN_RENDER_CHANNEL, ( event, message ) =>
-    //     {
-    //         this.store.dispatch( Object.assign( message, {event} ) );
-    //     });
-    // }
+        // handle ipc message by dispatching them to the store
+        ipcMain.on( MAIN_RENDER_CHANNEL, ( event, message ) =>
+        {
+            this.store.dispatch( Object.assign( message, {event} ) );
+        });
+    }
 };
 
 module.exports = new App();

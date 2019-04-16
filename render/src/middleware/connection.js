@@ -1,8 +1,10 @@
-import { CONFIG_CONNECTION_SAVE, CONFIG_CONNECTION_SAVE_SUCCESS } from "../action/";
-import openSocket from "socket.io-client";
+import electron from "electron";
+import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
+import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
+
 
 /**
- * Middleware that listens for REQUEST_BUTTON_SETTINGS event to pass that event via ipc to the main process.
+ * Middleware that listens for CONFIG_CONNECTION_SAVE event to pass that event via ipc to the main process.
  */
 const buttonMiddleware = ( { getState, dispatch } ) =>
 {
@@ -15,8 +17,8 @@ const buttonMiddleware = ( { getState, dispatch } ) =>
         switch( action.type )
         {
             case CONFIG_CONNECTION_SAVE:
-                socket = createConnection( action.currentConnection, dispatch );
-                result = null;
+                electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, action );
+                result = next( action );
             break;
             default:
                 result = next( action );
@@ -24,26 +26,5 @@ const buttonMiddleware = ( { getState, dispatch } ) =>
         return result;
     };
 };
-
-function createConnection( connectionData, dispatch )
-{
-    let socket = openSocket( `http://${connectionData.host}:${connectionData.port}` );
-
-    socket.on( "action", ( action ) =>
-    {
-        dispatch( action );
-    });
-
-    socket.on( "connect", ( ) =>
-    {
-        let action = {};
-        action.type = CONFIG_CONNECTION_SAVE_SUCCESS;
-        action.currentConnection = Object.assign( {}, connectionData );
-        action.currentConnection.socket = socket;
-        dispatch( action );
-    });
-
-    return socket;
-}
 
 export default buttonMiddleware;

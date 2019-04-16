@@ -1,4 +1,4 @@
-import { CONNECTION_ADD } from "../../../shared/actionType";
+const { CONNECTION_ADD } = require( "../../../shared/actionType" );
 /**
  * Handles all events, that change the buttons.
  * 
@@ -20,4 +20,4 @@ const connectionReducer = ( state = [], action ) =>
     return newState;
 };
 
-export default connectionReducer;
+module.exports = connectionReducer;

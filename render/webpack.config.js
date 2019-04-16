@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require( "html-webpack-plugin" );
 
 const config = {
     mode: "development",
+    target: "electron-renderer",
 
     entry: path.join( __dirname, "src", "index" ),
 

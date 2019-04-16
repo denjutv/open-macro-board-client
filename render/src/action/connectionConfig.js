@@ -1,3 +1,5 @@
+import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
+
 export const CONFIG_OPEN_NEW_CONNECTION = "CONFIG_OPEN_NEW_CONNECTION";
 
 export const openNewConnection = () =>
@@ -17,9 +19,6 @@ export const updateConfigConnection = ( fieldName, value ) =>
         value
     }
 }
-
-export const CONFIG_CONNECTION_SAVE = "CONFIG_CONNECTION_SAVE";
-export const CONFIG_CONNECTION_SAVE_SUCCESS = "CONFIG_CONNECTION_SAVE_SUCCESS";
 
 export const saveCurrentConnection = ( currentConnection ) =>
 {
