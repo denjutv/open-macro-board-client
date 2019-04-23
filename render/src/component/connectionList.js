@@ -9,11 +9,12 @@ function ConnectionList(props)
                 {
                     props.connections.map( connection =>
                     {
+                        console.log( connection );
                         return (
                         <div key={connection.name}>
                             {connection.name}<br />
                             {connection.host}:{connection.port}<br />
-                            { ((connection.socket && connection.socket.connected) ? "connected" : "not connected") }
+                            { ((connection.connected) ? "connected" : "not connected") }
                         </div>
                     )} )
                 }
