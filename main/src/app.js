@@ -18,8 +18,8 @@ class App
         // init redux store
         this.initStore();
 
-        const connectionManager = require( "./connectionManager" );
-        connectionManager.loadConnections( this.conf );
+        // ipc
+        this.initIpc();
 
         // create window
         this.initMainWindow();
@@ -31,9 +31,6 @@ class App
                 this.app.quit();
             }
         });
-
-        // ipc
-        this.initIpc();
     }
 
     initConfig()
@@ -58,7 +55,10 @@ class App
     {
         this.mainWindow = require( "./mainWindow" );
 
-        this.app.on( "ready", () => this.mainWindow.create( this.conf.get("window"), this.conf.get("showDevTools") ) );
+        this.app.on( "ready", () =>
+        {
+            this.mainWindow.create( this.conf.get("window"), this.conf.get("showDevTools") );
+        });
 
         this.app.on( "activate", () => {
             if( this.mainWindow.win === null ) {
@@ -70,12 +70,18 @@ class App
     initIpc()
     {
         const { ipcMain } = require( "electron" );
-        const { MAIN_RENDER_CHANNEL } = require( "../../shared/channel" );
+        const { MAIN_RENDER_CHANNEL, RENDER_DID_FINISH_LOAD } = require( "../../shared/channel" );
 
         // handle ipc message by dispatching them to the store
         ipcMain.on( MAIN_RENDER_CHANNEL, ( event, message ) =>
         {
             this.store.dispatch( Object.assign( message, {event} ) );
+        });
+
+        ipcMain.on( RENDER_DID_FINISH_LOAD, ( event, message ) =>
+        {
+            const connectionManager = require( "./connectionManager" );
+            connectionManager.loadConnections( this.conf, this.store, this.mainWindow.getSender() );
         });
     }
 };

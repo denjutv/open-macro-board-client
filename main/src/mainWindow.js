@@ -28,6 +28,11 @@ class MainWindow
             this.win = null;
         });
     }
+
+    getSender()
+    {
+        return this.win.webContents;
+    }
 };
 
 module.exports = new MainWindow();

@@ -8,9 +8,29 @@ class ConnectionManager
         this.config = null;
     }
 
-    loadConnections( config )
+    loadConnections( config, store, sender )
     {
         this.config = config;
+
+        const connections = config.get( "connections" );
+
+        if( connections )
+        {
+            const { CONFIG_CONNECTION_SAVE } = require( "../../shared/actionType" );
+            for( let conIndex = 0; conIndex < connections.length; ++conIndex )
+            {
+                const connection = connections[ conIndex ];
+                
+                store.dispatch(
+                {
+                    type: CONFIG_CONNECTION_SAVE,
+                    currentConnection: connection,
+                    event: {
+                        sender
+                    }
+                });
+            }
+        }
     }
 
     addConnection( connectionData, dispatch, sender )
