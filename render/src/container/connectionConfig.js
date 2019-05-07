@@ -1,16 +1,18 @@
 import { connect } from "react-redux";
 import ConnectionConfig from "../component/connectionConfig";
 import { updateConfigConnection, saveCurrentConnection } from "../action/";
+import ConnectionHelper from "../../../shared/helper/connection";
 
 const mapStateToProps = ( state, ownProps ) =>
 ({
-    currentConnection: state.connectionConfig.currentConnection
+    currentConnection: state.connectionConfig.currentConnection,
+    connections: state.connections
 });
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
     updateConnection: event => dispatch( updateConfigConnection( event.target.name, event.target.value ) ),
-    saveCurrentConnection: currentConnection => checkConnectionConfig( currentConnection ) ? dispatch( saveCurrentConnection( Object.assign( {}, currentConnection ) ) ) : null
+    saveCurrentConnection: ( currentConnection, connections ) => checkConnectionConfig( currentConnection, connections ) ? dispatch( saveCurrentConnection( Object.assign( {}, currentConnection ) ) ) : null
 });
 
 function isPositiveInteger(s)
@@ -25,11 +27,15 @@ function isPositiveInteger(s)
  * @param {Object} currentConnection 
  * @returns {Boolean}
  */
-function checkConnectionConfig( currentConnection )
+function checkConnectionConfig( currentConnection, connections )
 {
     let isValid = true;
 
     if( !currentConnection.name.length )
+    {
+        isValid = false;
+    }
+    else if( !ConnectionHelper.checkForUniqueConnectionName( connections, currentConnection.name ) )
     {
         isValid = false;
     }
