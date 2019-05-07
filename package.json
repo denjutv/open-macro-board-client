@@ -7,7 +7,7 @@
     "build": "webpack --config ./render/webpack.config.js",
     "start": "electron ./main/src",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gulp dev  --gulpfile=./tasks/index.js"
+    "dev": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
