@@ -5,6 +5,12 @@ class ConnectionManager
     constructor( )
     {
         this.connections = {};
+        this.config = null;
+    }
+
+    loadConnections( config )
+    {
+        this.config = config;
     }
 
     addConnection( connectionData, dispatch, sender )
@@ -13,11 +19,26 @@ class ConnectionManager
 
         if( !this.connections.hasOwnProperty( connectionData.name ) )
         {
-            this.connections[ connectionData.name ] = this.createConnection( connectionData, dispatch, sender );
+            this.connections[ connectionData.name ] = 
+            {
+                socket: this.createConnection( connectionData, dispatch, sender ),
+                connectionData
+            };
             added = true;
+
+            this.saveToConfig();
         }
 
         return added;
+    }
+
+    saveToConfig()
+    {
+        if( this.config )
+        {
+            this.config.set( "connections",
+                Object.entries( this.connections ).map( ([ key, value ]) => value.connectionData ) );
+        }
     }
 
     /*createConnection( connectionData, dispatch, sender )

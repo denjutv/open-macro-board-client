@@ -15,10 +15,11 @@ class App
         // init config
         this.initConfig();
 
-        // console.log( this.app.getAppPath() );
-
         // init redux store
         this.initStore();
+
+        const connectionManager = require( "./connectionManager" );
+        connectionManager.loadConnections( this.conf );
 
         // create window
         this.initMainWindow();
