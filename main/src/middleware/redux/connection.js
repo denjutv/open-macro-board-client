@@ -1,5 +1,4 @@
-const openSocket = require( "socket.io-client" );
-const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED } = require( "../../../../shared/actionType" );
+const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_REFUSED } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
 const connectionManager = require( "../../connectionManager" );
 
@@ -18,13 +17,21 @@ const configMiddleware = ( { getState, dispatch } ) =>
         {
             // intercept CONFIG_CONNECTION_SAVE action and 
             case CONFIG_CONNECTION_SAVE:
-                newAction.type = CONNECTION_ADD;
-                newAction.connection = Object.assign( {}, action.currentConnection );
-                newAction.connection.connected = false;
+                if( connectionManager.addConnection( action.currentConnection, dispatch, action.event.sender ) )
+                {
+                    newAction.type = CONNECTION_ADD;
+                    newAction.connection = Object.assign( {}, action.currentConnection );
+                    newAction.connection.connected = false;
+                    
+                    action.event.sender.send( MAIN_RENDER_CHANNEL, newAction );
 
-                action.event.sender.send( MAIN_RENDER_CHANNEL, newAction );
-
-                result = next( newAction );
+                    result = next( newAction );
+                }
+                else
+                {
+                    action.event.sender.send( MAIN_RENDER_CHANNEL, { type: CONNECTION_REFUSED, connection: Object.assign( {}, action.currentConnection ) } );
+                }
+                
             break;
             case CONNECTION_CONNECTED:
                 action.sender.send( MAIN_RENDER_CHANNEL, action );

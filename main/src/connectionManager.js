@@ -1,3 +1,5 @@
+const openSocket = require( "socket.io-client" );
+
 class ConnectionManager
 {
     constructor( )
@@ -7,7 +9,15 @@ class ConnectionManager
 
     addConnection( connectionData, dispatch, sender )
     {
-        this.connections[ connectionData.name ] = this.createConnection( connectionData, dispatch, sender );
+        let added = false;
+
+        if( !this.connections.hasOwnProperty( connectionData.name ) )
+        {
+            this.connections[ connectionData.name ] = this.createConnection( connectionData, dispatch, sender );
+            added = true;
+        }
+
+        return added;
     }
 
     /*createConnection( connectionData, dispatch, sender )
@@ -51,7 +61,8 @@ class ConnectionManager
             action.sender = sender;
             dispatch( action ); 
         },
-        250 )
+        250 );
+
         return {};
     }
 };
