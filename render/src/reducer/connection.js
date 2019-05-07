@@ -1,5 +1,5 @@
 import { CONNECTION_ADD, CONNECTION_CONNECTED } from "../../../shared/actionType";
-
+import ConnectionHelper from "../../../shared/helper/connection";
 /**
  * Handles all events, that change the buttons.
  * 
@@ -19,8 +19,7 @@ const connectionReducer = ( state = [], action ) =>
             newState.push( action.connection );
         break;
         case CONNECTION_CONNECTED:
-        console.log(456, action);
-            index = getConnectionIndexByName( state, action.currentConnection.name );
+            index = ConnectionHelper.getConnectionIndexByName( state, action.currentConnection.name );
             if( index >= 0 )
             {
                 newState = state.slice();
@@ -34,24 +33,5 @@ const connectionReducer = ( state = [], action ) =>
 
     return newState;
 };
-
-function getConnectionIndexByName( connections, name )
-{
-    let connectionIndex = -1;
-    const connectionLength = connections.length;
-
-    for( let index=0; index < connectionLength; ++index )
-    {
-        let con = connections[index];
-
-        if( con.name === name )
-        {
-            connectionIndex = index;
-            break;
-        }
-    }
-    
-    return connectionIndex;
-}
 
 export default connectionReducer;
