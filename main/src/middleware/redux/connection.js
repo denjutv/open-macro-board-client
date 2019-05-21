@@ -1,6 +1,6 @@
 const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
-const connectionManager = require( "../../connectionManager" );
+const app = require( "../../app" );
 
 
 /**
@@ -17,7 +17,7 @@ const configMiddleware = ( { getState, dispatch } ) =>
         {
             // intercept CONFIG_CONNECTION_SAVE action and 
             case CONFIG_CONNECTION_SAVE:
-                if( connectionManager.addConnection( action.currentConnection, dispatch, action.event.sender ) )
+                if( app.connectionManager.addConnection( action.currentConnection, dispatch, action.event.sender ) )
                 {
                     newAction.type = CONNECTION_ADD;
                     newAction.connection = Object.assign( {}, action.currentConnection );

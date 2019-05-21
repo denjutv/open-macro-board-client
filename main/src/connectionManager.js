@@ -122,4 +122,4 @@ class ConnectionManager
     // }
 };
 
-module.exports = new ConnectionManager();
+module.exports = ConnectionManager;

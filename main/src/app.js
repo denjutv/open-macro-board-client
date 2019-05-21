@@ -8,6 +8,9 @@ class App
         this.store = null;
 
         this.mainWindow = null;
+
+        const ConnectionManager = require( "./connectionManager" );
+        this.connectionManager = new ConnectionManager();
     }
 
     init()
@@ -80,8 +83,7 @@ class App
 
         ipcMain.on( RENDER_DID_FINISH_LOAD, ( event, message ) =>
         {
-            const connectionManager = require( "./connectionManager" );
-            connectionManager.loadConnections( this.conf, this.store, this.mainWindow.getSender() );
+            this.connectionManager.loadConnections( this.conf, this.store, this.mainWindow.getSender() );
         });
     }
 };
