@@ -1,5 +1,6 @@
 const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
+const { BUTTON_PRESSED } = require( "../../action" );
 const app = require( "../../app" );
 
 
@@ -39,7 +40,8 @@ const configMiddleware = ( { getState, dispatch } ) =>
                 action.sender.send( MAIN_RENDER_CHANNEL, action );
                 result = next( action );
             break;
-        
+            case BUTTON_PRESSED:
+                console.log( action.buttonIndex );
             default:
                 result = next( action );
         }

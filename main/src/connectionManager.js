@@ -65,11 +65,11 @@ class ConnectionManager
     {
         let socket = openSocket( `http://${connectionData.host}:${connectionData.port}` );
 
-        // socket.on( "action", ( action ) =>
-        // {
-        //     console.log( "action", action );
-        //     // dispatch( action );
-        // });
+        socket.on( "action", ( action ) =>
+        {
+            // console.log( "action", action );
+            dispatch( action );
+        });
 
         socket.on( "connect", ( ) =>
         {
