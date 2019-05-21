@@ -1,4 +1,4 @@
-const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_REFUSED } = require( "../../../../shared/actionType" );
+const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
 const connectionManager = require( "../../connectionManager" );
 
@@ -33,7 +33,9 @@ const configMiddleware = ( { getState, dispatch } ) =>
                 }
                 
             break;
+            // forward connect and disconnect event to render process
             case CONNECTION_CONNECTED:
+            case CONNECTION_DISCONNECTED:
                 action.sender.send( MAIN_RENDER_CHANNEL, action );
                 result = next( action );
             break;

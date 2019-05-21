@@ -61,7 +61,7 @@ class ConnectionManager
         }
     }
 
-    /*createConnection( connectionData, dispatch, sender )
+    createConnection( connectionData, dispatch, sender )
     {
         let socket = openSocket( `http://${connectionData.host}:${connectionData.port}` );
 
@@ -73,9 +73,23 @@ class ConnectionManager
 
         socket.on( "connect", ( ) =>
         {
+            const { CONNECTION_CONNECTED } = require( "../../shared/actionType" );
+
             console.log( "connected" );
             let action = {};
             action.type = CONNECTION_CONNECTED;
+            action.currentConnection = Object.assign( {}, connectionData );
+            action.sender = sender;
+            dispatch( action );
+        });
+
+        socket.on( "disconnect", () =>
+        {
+            const { CONNECTION_DISCONNECTED } = require( "../../shared/actionType" );
+
+            console.log( "disconnected" );
+            let action = {};
+            action.type = CONNECTION_DISCONNECTED;
             action.currentConnection = Object.assign( {}, connectionData );
             action.sender = sender;
             dispatch( action );
@@ -87,25 +101,25 @@ class ConnectionManager
         // });
 
         return socket;
-    }*/
-
-    createConnection( connectionData, dispatch, sender )
-    {
-        const { CONNECTION_CONNECTED } = require( "../../shared/actionType" );
-
-        setTimeout( () =>
-        {
-            console.log( "connected" );
-            let action = {};
-            action.type = CONNECTION_CONNECTED;
-            action.currentConnection = Object.assign( {}, connectionData );
-            action.sender = sender;
-            dispatch( action ); 
-        },
-        250 );
-
-        return {};
     }
+
+    // createConnection( connectionData, dispatch, sender )
+    // {
+    //     const { CONNECTION_CONNECTED } = require( "../../shared/actionType" );
+
+    //     setTimeout( () =>
+    //     {
+    //         console.log( "connected" );
+    //         let action = {};
+    //         action.type = CONNECTION_CONNECTED;
+    //         action.currentConnection = Object.assign( {}, connectionData );
+    //         action.sender = sender;
+    //         dispatch( action ); 
+    //     },
+    //     250 );
+
+    //     return {};
+    // }
 };
 
 module.exports = new ConnectionManager();
