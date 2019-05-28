@@ -1,6 +1,6 @@
 const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
-const { BUTTON_PRESSED } = require( "../../action" );
+const { BUTTON_PRESSED, BUTTONS_UPDATE } = require( "../../action/" );
 const app = require( "../../app" );
 
 
@@ -13,6 +13,7 @@ const configMiddleware = ( { getState, dispatch } ) =>
     {
         let result = null;
         let newAction = {};
+        let connection = null;
 
         switch( action.type )
         {
@@ -42,6 +43,14 @@ const configMiddleware = ( { getState, dispatch } ) =>
             break;
             case BUTTON_PRESSED:
                 console.log( action.buttonIndex );
+                break;
+            case BUTTONS_UPDATE:
+                console.log( "send to board" );
+
+                connection = app.connectionManager.getConnectionByName( action.connectionName );
+                connection.socket.emit( "action", action );
+
+                break;
             default:
                 result = next( action );
         }

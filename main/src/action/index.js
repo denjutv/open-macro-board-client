@@ -1,2 +1,1 @@
-module.exports = require( "./connection" );
-module.exports = require( "./boardButton" );
+module.exports = Object.assign( require( "./connection" ), require( "./boardButton" ) );

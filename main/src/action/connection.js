@@ -1,4 +1,6 @@
-const { CONNECTION_ADD } = require( "../../../shared/actionType" );
+const { CONNECTION_ADD, CONNECTION_CONNECTED } = require( "../../../shared/actionType" );
+
+const BUTTONS_UPDATE = "BUTTONS_UPDATE";
 
 module.exports =
 {
@@ -9,6 +11,26 @@ module.exports =
         return {
             type: CONNECTION_ADD,
             connection
+        };
+    },
+
+    connected: ( connectionData, sender ) =>
+    {
+        return {
+            type: CONNECTION_CONNECTED,
+            currentConnection: Object.assign( {}, connectionData ),
+            sender: sender
+        };
+    },
+
+    BUTTONS_UPDATE,
+
+    updateButtons: ( connectionName, buttons ) =>
+    {
+        return {
+            type: BUTTONS_UPDATE,
+            connectionName,
+            buttons
         };
     }
 };

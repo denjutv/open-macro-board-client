@@ -8,6 +8,18 @@ class ConnectionManager
         this.config = null;
     }
 
+    getConnectionByName( name )
+    {
+        let connection = null;
+
+        if( this.connections.hasOwnProperty( name ) )
+        {
+            connection = this.connections[ name ];
+        }
+
+        return connection;
+    }
+
     loadConnections( config, store, sender )
     {
         this.config = config;
@@ -37,15 +49,16 @@ class ConnectionManager
     addConnection( connectionData, buttons, dispatch, sender )
     {
         let added = false;
+        buttons = buttons || this.config.get("defaultButtonPositions");
 
         // check if a conection with the connection name already exists
         if( !this.connections.hasOwnProperty( connectionData.name ) )
         {
             this.connections[ connectionData.name ] = 
             {
-                socket: this.createConnection( connectionData, dispatch, sender ),
+                socket: this.createConnection( connectionData, buttons, dispatch, sender ),
                 connectionData,
-                buttons: buttons ? buttons : this.config.get("defaultButtonPositions")
+                buttons
             };
             added = true;
 
@@ -64,7 +77,7 @@ class ConnectionManager
         }
     }
 
-    createConnection( connectionData, dispatch, sender )
+    createConnection( connectionData, buttons, dispatch, sender )
     {
         let socket = openSocket( `http://${connectionData.host}:${connectionData.port}` );
 
@@ -76,14 +89,14 @@ class ConnectionManager
 
         socket.on( "connect", ( ) =>
         {
-            const { CONNECTION_CONNECTED } = require( "../../shared/actionType" );
-
             console.log( "connected" );
-            let action = {};
-            action.type = CONNECTION_CONNECTED;
-            action.currentConnection = Object.assign( {}, connectionData );
-            action.sender = sender;
-            dispatch( action );
+            const { connected, updateButtons } = require( "./action/" );
+
+            // dispatch connection state to the frontend process
+            dispatch( connected( connectionData, sender ) );
+
+            // after connecting send button config to board
+            dispatch( updateButtons( connectionData.name, buttons ) );
         });
 
         socket.on( "disconnect", () =>
