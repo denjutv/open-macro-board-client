@@ -18,7 +18,7 @@ const configMiddleware = ( { getState, dispatch } ) =>
         {
             // intercept CONFIG_CONNECTION_SAVE action and 
             case CONFIG_CONNECTION_SAVE:
-                if( app.connectionManager.addConnection( action.currentConnection, dispatch, action.event.sender ) )
+                if( app.connectionManager.addConnection( action.currentConnection, action.buttons, dispatch, action.event.sender ) )
                 {
                     newAction.type = CONNECTION_ADD;
                     newAction.connection = Object.assign( {}, action.currentConnection );

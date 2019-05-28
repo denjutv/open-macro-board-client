@@ -24,7 +24,8 @@ class ConnectionManager
                 store.dispatch(
                 {
                     type: CONFIG_CONNECTION_SAVE,
-                    currentConnection: connection,
+                    currentConnection: connection.connectionData,
+                    buttons: connection.buttons,
                     event: {
                         sender
                     }
@@ -33,16 +34,18 @@ class ConnectionManager
         }
     }
 
-    addConnection( connectionData, dispatch, sender )
+    addConnection( connectionData, buttons, dispatch, sender )
     {
         let added = false;
 
+        // check if a conection with the connection name already exists
         if( !this.connections.hasOwnProperty( connectionData.name ) )
         {
             this.connections[ connectionData.name ] = 
             {
                 socket: this.createConnection( connectionData, dispatch, sender ),
-                connectionData
+                connectionData,
+                buttons: buttons ? buttons : this.config.get("defaultButtonPositions")
             };
             added = true;
 
@@ -57,7 +60,7 @@ class ConnectionManager
         if( this.config )
         {
             this.config.set( "connections",
-                Object.entries( this.connections ).map( ([ key, value ]) => value.connectionData ) );
+                Object.entries( this.connections ).map( ([ key, value ]) => ({connectionData: value.connectionData, buttons: value.buttons }) ) );
         }
     }
 
