@@ -27,6 +27,7 @@ module.exports =
         height: 480,
         fullscreen: false
     },
+    language: "en",
     defaultButtonPositions,
     showDevTools: true,
     port: 3000

@@ -1,6 +1,6 @@
-const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED } = require( "../../../../shared/actionType" );
+const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED, GET_SETTINGS } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
-const { BUTTON_PRESSED, BUTTONS_UPDATE } = require( "../../action/" );
+const { BUTTON_PRESSED, BUTTONS_UPDATE, SETTINGS_SEND } = require( "../../action/" );
 const app = require( "../../app" );
 
 
@@ -50,6 +50,9 @@ const configMiddleware = ( { getState, dispatch } ) =>
                 connection = app.connectionManager.getConnectionByName( action.connectionName );
                 connection.socket.emit( "action", action );
 
+                break;
+            case SETTINGS_SEND:
+                    app.mainWindow.getSender().send( MAIN_RENDER_CHANNEL, Object.assign( action, {type:GET_SETTINGS} ) );
                 break;
             default:
                 result = next( action );

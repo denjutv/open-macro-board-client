@@ -84,6 +84,12 @@ class App
         ipcMain.on( RENDER_DID_FINISH_LOAD, ( event, message ) =>
         {
             this.connectionManager.loadConnections( this.conf, this.store, this.mainWindow.getSender() );
+
+            // send settings to render process
+            const objFilter = require( "./objFilter" );
+            const {sendSettings} = require("./action/");
+            const whiteList = ["language", "port"];
+            this.store.dispatch( sendSettings( objFilter( this.conf.all, whiteList ) ) );
         });
     }
 };

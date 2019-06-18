@@ -1,7 +1,7 @@
 import electron from "electron";
-import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
+import { CONFIG_CONNECTION_SAVE, GET_SETTINGS } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
-
+import translator from "../translator";
 
 /**
  * Middleware that listens for CONFIG_CONNECTION_SAVE event to pass that event via ipc to the main process.
@@ -20,6 +20,10 @@ const buttonMiddleware = ( { getState, dispatch } ) =>
                 electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, action );
                 result = next( action );
             break;
+            case GET_SETTINGS:
+                translator.changeLanguage( action.settings.language );
+                result = next( action );
+                break;
             default:
                 result = next( action );
         }
