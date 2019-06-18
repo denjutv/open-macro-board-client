@@ -1,4 +1,5 @@
 import React from "react";
+import { withTranslation } from "react-i18next";
 
 function ConnectionConfig( props )
 {
@@ -7,36 +8,39 @@ function ConnectionConfig( props )
         return null;
     }
 
+    const {t} = props;
+
     return (
         <div>
             <div>
-                <label htmlFor="name">Connection Name</label>
+                <label htmlFor="name">{t("connectionConfigConnetionName")}</label>
                 <input type="text" name="name" id="name" value={props.currentConnection.name} onChange={props.updateConnection} />
             </div>
 
             <div>
-                <label htmlFor="host">Host</label>
+                <label htmlFor="host">{t("connectionConfigHost")}</label>
                 <input type="text" name="host" id="host" value={props.currentConnection.host} onChange={props.updateConnection} />
             </div>
 
             <div>
-                <label htmlFor="port">Port</label>
+                <label htmlFor="port">{t("connectionConfigPort")}</label>
                 <input type="text" name="port" id="port" value={props.currentConnection.port} onChange={props.updateConnection} />
             </div>
 
             <div>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{t("connectionConfigPassword")}</label>
                 <input type="password" name="password" id="password" value={props.currentConnection.passwort} onChange={props.updateConnection} />
             </div>
 
             <div>
-                <label htmlFor="passwordRepeat">Password (repeat)</label>
+                <label htmlFor="passwordRepeat">{t("connectionConfigPasswordRepeat")}</label>
                 <input type="password" name="passwordRepeat" id="passwordRepeat" value={props.currentConnection.passwortRepeat} onChange={props.updateConnection} />
             </div>
 
-            <button onClick={props.saveCurrentConnection.bind( null, props.currentConnection, props.connections )}>save</button>
+            <button onClick={props.saveCurrentConnection.bind( null, props.currentConnection, props.connections )}>{t("connectionConfigSaveButton")}</button>
         </div>
     )
 }
 
-export default ConnectionConfig;
+export default withTranslation()(ConnectionConfig);
+// export default ConnectionConfig;

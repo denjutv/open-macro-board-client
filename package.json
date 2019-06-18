@@ -45,6 +45,8 @@
     "redux": "^4.0.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^5.2.1",
+    "i18next": "^17.0.3",
+    "react-i18next": "^10.11.1"
   }
 }

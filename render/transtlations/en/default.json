@@ -1,0 +1,11 @@
+{
+    "connectionStateNotConnected": "not connected",
+    "connectionStateConnected": "connected",
+
+    "connectionConfigConnetionName": "Connection Name",
+    "connectionConfigHost": "Host",
+    "connectionConfigPort": "Port",
+    "connectionConfigPassword": "Password",
+    "connectionConfigPasswordRepeat": "Password (repeat)",
+    "connectionConfigSaveButton": "save"
+}

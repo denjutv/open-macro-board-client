@@ -1,20 +1,21 @@
 import React from "react";
 import ConnectionConfigContainer from "../container/connectionConfig";
+import { withTranslation } from "react-i18next";
 
 function ConnectionList(props)
 {
+    const {t} = props;
     return (
         <div>
             <div>
                 {
                     props.connections.map( connection =>
                     {
-                        console.log( connection );
                         return (
                         <div key={connection.name}>
                             {connection.name}<br />
                             {connection.host}:{connection.port}<br />
-                            { ((connection.connected) ? "connected" : "not connected") }
+                            { ((connection.connected) ? t("connectionStateConnected") : t("connectionStateNotConnected")) }
                         </div>
                     )} )
                 }
@@ -26,4 +27,4 @@ function ConnectionList(props)
     );
 }
 
-export default ConnectionList;
+export default withTranslation()(ConnectionList);
