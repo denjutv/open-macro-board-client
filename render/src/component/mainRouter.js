@@ -4,9 +4,7 @@ import ConnectionListContainer from "../container/connectionList";
 function MainRouter( props )
 {
     return (
-        <div>
-            <ConnectionListContainer />
-        </div>
+        <ConnectionListContainer />
     );
 }
 
