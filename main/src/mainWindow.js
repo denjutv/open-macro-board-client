@@ -12,6 +12,7 @@ class MainWindow
         this.win = new BrowserWindow({
             width: displaySettings.width,
             height: displaySettings.height,
+            fullscreen: displaySettings.fullscreen,
             transparent: false
         });
     

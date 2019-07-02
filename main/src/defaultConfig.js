@@ -25,7 +25,7 @@ module.exports =
     {
         width: 800,
         height: 480,
-        fullscreen: false
+        fullscreen: true
     },
     language: "en",
     defaultButtonPositions,
