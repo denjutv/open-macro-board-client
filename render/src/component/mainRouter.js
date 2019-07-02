@@ -1,10 +1,10 @@
 import React from "react";
-import ConnectionListContainer from "../container/connectionList";
+import OpenMacroBoardClient from "./";
 
 function MainRouter( props )
 {
     return (
-        <ConnectionListContainer />
+        <OpenMacroBoardClient />
     );
 }
 
