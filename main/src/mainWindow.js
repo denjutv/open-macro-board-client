@@ -12,12 +12,16 @@ class MainWindow
         this.win = new BrowserWindow({
             width: displaySettings.width,
             height: displaySettings.height,
-            fullscreen: displaySettings.fullscreen,
             transparent: false
         });
     
         const path = require( "path" );
         this.win.loadFile( path.join( __dirname, "..", "..", "render", "dist", "index.html" ) );
+
+        if( displaySettings.fullscreen )
+        {
+            this.win.maximize();
+        }
 
         if( showDevTools )
         {
