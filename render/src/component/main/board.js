@@ -24,7 +24,7 @@ function Board( props )
 
                             <div className="openDeck__item isActive">
                                 <div className="openDeck__iteminner">
-                                    <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604);"}}>
+                                    <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)"}}>
                                         <div className="openDeckButton__icon">
                                             <img src="opendeck-Dateien/youtube.png" alt="" />
                                         </div>
@@ -36,7 +36,7 @@ function Board( props )
                             </div>
                             <div className="openDeck__item">
                                 <div className="openDeck__iteminner">
-                                    <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604);"}}>
+                                    <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)"}}>
                                         <div className="openDeckButton__icon">
                                             <img src="opendeck-Dateien/photoshop.png" alt="" />
                                         </div>
@@ -48,7 +48,7 @@ function Board( props )
                             </div>
                             <div className="openDeck__item">
                                 <div className="openDeck__iteminner">
-                                    <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604);"}}>
+                                    <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)"}}>
                                         <div className="openDeckButton__icon">
                                             <img src="opendeck-Dateien/ebay.png" alt="" />
                                         </div>

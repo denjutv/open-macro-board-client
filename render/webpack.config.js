@@ -1,5 +1,9 @@
 const path  = require( "path" );
 const HtmlWebpackPlugin = require( "html-webpack-plugin" );
+const CopyPlugin = require( "copy-webpack-plugin" );
+
+const assetsFolder = path.join( __dirname, "assets" );
+const distFolder = path.join( __dirname, "dist" );
 
 const config = {
     mode: "development",
@@ -10,9 +14,9 @@ const config = {
     devtool: "inline-source-map",
 
     output: {
-        path: path.join( __dirname, "dist" ),
+        path: distFolder,
         filename: "bundle.js",
-        publicPath: ""
+        publicPath: distFolder
     },
 
     module: {
@@ -33,7 +37,12 @@ const config = {
                 title: "Open Macro Board Client",
                 template: path.join( __dirname, "template", "index.html" )
             }
-        )
+        ),
+        new CopyPlugin([
+            { from: path.join( assetsFolder, "css", "main.css" ), to: path.join( distFolder, "css", "main.css"  ) },
+            { from: path.join( assetsFolder, "css", "icon.css" ), to: path.join( distFolder, "css", "icon.css"  ) },
+            { from: path.join( assetsFolder, "fonts", "my-font.woff2" ), to: path.join( distFolder, "fonts", "my-font.woff2"  ) },
+          ])
     ]
 };
 
