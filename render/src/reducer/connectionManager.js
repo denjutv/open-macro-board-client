@@ -1,9 +1,12 @@
-import { CONFIG_OPEN_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE } from "../action/";
+import { CONFIG_OPEN_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE, CONNECTION_MANAGER_OPEN,
+    CONNECTION_MANAGER_CLOSE, SET_ACTIVE_CONNECTION } from "../action/";
 import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
 
 
 const defaultState = {
-    currentConnection: null
+    currentConnection: null,
+    isOpen: false,
+    activeConnectionName: ""
 };
 
 const emptyConnection = {
@@ -20,7 +23,7 @@ const emptyConnection = {
  * @param {Object} state Current state passed by the redux store
  * @param {Object} action Current action object
  */
-const connectionConfigReducer = ( state = defaultState, action ) =>
+const connectionManagerReducer = ( state = defaultState, action ) =>
 {
     let newState = state;
 
@@ -36,9 +39,18 @@ const connectionConfigReducer = ( state = defaultState, action ) =>
         case CONFIG_CONNECTION_SAVE:
             newState = {...state, currentConnection: null };
         break;
+        case CONNECTION_MANAGER_OPEN:
+            newState = {...state, isOpen: true };
+        break;
+        case CONNECTION_MANAGER_CLOSE:
+            newState = {...state, isOpen: false };
+        break;
+        case SET_ACTIVE_CONNECTION:
+            newState = {...state, activeConnectionName: action.connectionName };
+        break;
     }
 
     return newState;
 };
 
-export default connectionConfigReducer;
+export default connectionManagerReducer;

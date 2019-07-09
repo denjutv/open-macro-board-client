@@ -1,1 +1,1 @@
-export * from "./connectionConfig";
+export * from "./connectionManager";

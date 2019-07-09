@@ -27,3 +27,33 @@ export const saveCurrentConnection = ( currentConnection ) =>
         currentConnection
     }
 }
+
+// open and close connection list
+
+export const CONNECTION_MANAGER_OPEN = "CONNECTION_MANAGER_OPEN";
+
+export const openConnectionManager = ( ) =>
+{
+    return {
+        type: CONNECTION_MANAGER_OPEN
+    }
+}
+
+export const CONNECTION_MANAGER_CLOSE = "CONNECTION_MANAGER_CLOSE";
+
+export const closeConnectionManager = ( ) =>
+{
+    return {
+        type: CONNECTION_MANAGER_CLOSE
+    }
+}
+
+export const SET_ACTIVE_CONNECTION = "SET_ACTIVE_CONNECTION";
+
+export const setActiveConnection = connectionName =>
+{
+    return {
+        type: SET_ACTIVE_CONNECTION,
+        connectionName
+    }
+}

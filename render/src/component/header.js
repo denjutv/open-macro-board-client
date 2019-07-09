@@ -8,7 +8,7 @@ function Header( props )
                 <div className="header__logo">
                     Open Macro Deck
                 </div>
-                <div className="header__connection header__connection--connected">
+                <div className="header__connection header__connection--connected" onClick={props.openConnectionManager}>
                     192.168.1.66
                     <span>Zombiedeck</span>
                 </div>

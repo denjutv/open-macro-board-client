@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import connectionReducer from "./connection";
-import connectionConfigReducer from "./connectionConfig";
+import connectionManagerReducer from "./connectionManager";
 import settingsReducer from "./settings";
 
 export default combineReducers(
 {
     connections: connectionReducer,
-    connectionConfig: connectionConfigReducer,
+    connectionManager: connectionManagerReducer,
     settings: settingsReducer
 });
