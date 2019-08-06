@@ -3,7 +3,7 @@ import { CONFIG_START_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE, CONNECTION_MANAG
     CONNECTION_CONFIG_CLOSE_NEW_DIALOG,
     CONNECTION_CONFIG_OPEN_EDIT_DIALOG,
     CONNECTION_CONFIG_CLOSE_EDIT_DIALOG } from "../action/";
-import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
+import { CONFIG_CONNECTION_SAVE, GET_SETTINGS } from "../../../shared/actionType";
 
 
 const defaultState = {
@@ -54,6 +54,13 @@ const connectionManagerReducer = ( state = defaultState, action ) =>
         case SET_ACTIVE_CONNECTION:
             newState = {...state, activeConnectionName: action.connectionName };
         break;
+
+        case GET_SETTINGS:
+            if( action.settings && action.settings.currentConnectionName )
+            {
+                newState = {...state, currentConnectionName: action.settings.currentConnectionName };
+            }
+            break;
 
         case CONNECTION_CONFIG_OPEN_NEW_DIALOG:
             newState = Object.assign( {}, state, {isNewConnectionOpen: true} );
