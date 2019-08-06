@@ -60,7 +60,7 @@ function ConnectionManager( props )
         </main>
 
         <footer className="connectionManager__footer">
-          <div className="ctaButton" onclick="openNewConnection();">
+          <div className="ctaButton">
             <span>add</span>Neue Verbindung
           </div>
         </footer>
