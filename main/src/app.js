@@ -50,8 +50,9 @@ class App
         const { createStore, applyMiddleware } = require( "redux" );
         const rootReducer = require( "./reducer" );
         const connectionMiddleware = require( "./middleware/redux/connection" );
+        const configMiddleware = require( "./middleware/redux/config" );
         // const initialState = {buttons: this.conf.get("buttons")};
-        this.store = createStore( rootReducer, /*initialState ,*/ applyMiddleware( connectionMiddleware )  );
+        this.store = createStore( rootReducer, /*initialState ,*/ applyMiddleware( connectionMiddleware, configMiddleware )  );
     }
 
     initMainWindow()
@@ -88,7 +89,7 @@ class App
             // send settings to render process
             const objFilter = require( "./objFilter" );
             const {sendSettings} = require("./action/");
-            const whiteList = ["language", "port"];
+            const whiteList = ["language", "port", "currentConnectionName"];
             this.store.dispatch( sendSettings( objFilter( this.conf.all, whiteList ) ) );
         });
     }

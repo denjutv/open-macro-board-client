@@ -6,13 +6,11 @@ import translator from "../translator";
 /**
  * Middleware that listens for CONFIG_CONNECTION_SAVE event to pass that event via ipc to the main process.
  */
-const buttonMiddleware = ( { getState, dispatch } ) =>
+const connectionMiddleware = ( { getState, dispatch } ) =>
 {
     return ( next ) => (action) => 
     {
         let result = null;
-        let socket = null;
-        let newAction = null;
 
         switch( action.type )
         {
@@ -31,4 +29,4 @@ const buttonMiddleware = ( { getState, dispatch } ) =>
     };
 };
 
-export default buttonMiddleware;
+export default connectionMiddleware;

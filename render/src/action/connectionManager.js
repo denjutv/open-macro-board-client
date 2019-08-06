@@ -20,11 +20,12 @@ export const updateConfigConnection = ( fieldName, value ) =>
     }
 }
 
-export const saveCurrentConnection = ( currentConnection ) =>
+export const saveCurrentConnection = ( currentConnection, isNewConnection = false ) =>
 {
     return {
         type: CONFIG_CONNECTION_SAVE,
-        currentConnection
+        currentConnection,
+        isNewConnection
     }
 }
 

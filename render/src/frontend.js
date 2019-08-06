@@ -4,7 +4,8 @@ import rootReducer from "./reducer/index";
 import MainRouter from "./component/mainRouter";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import connectionMiddleare from "./middleware/connection";
+import connectionMiddleware from "./middleware/connection";
+import connectionManagerMiddleware from "./middleware/connectionManager";
 import { MAIN_RENDER_CHANNEL, RENDER_DID_FINISH_LOAD } from "../../shared/channel";
 import electron from "electron";
 
@@ -26,7 +27,7 @@ class Frontend
     init( contentElement )
     {
         // create store
-        this.store = createStore( rootReducer, applyMiddleware( connectionMiddleare ) );
+        this.store = createStore( rootReducer, applyMiddleware( connectionMiddleware, connectionManagerMiddleware ) );
 
         // // set up ipc handler
         // // handle ipc message by dispatching them to the store

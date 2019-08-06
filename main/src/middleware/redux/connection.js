@@ -7,7 +7,7 @@ const app = require( "../../app" );
 /**
  * Middleware that listens for CONFIG_CONNECTION_SAVE event to pass that event via ipc to the main process.
  */
-const configMiddleware = ( { getState, dispatch } ) =>
+const connectionMiddleware = ( { getState, dispatch } ) =>
 {
     return ( next ) => (action) => 
     {
@@ -63,4 +63,4 @@ const configMiddleware = ( { getState, dispatch } ) =>
 
 
 
-module.exports = configMiddleware;
+module.exports = connectionMiddleware;
