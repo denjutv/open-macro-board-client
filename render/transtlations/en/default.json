@@ -1,7 +1,14 @@
 {
+    "close": "close",
+    "abort": "abort",
+    "add": "add",
+
+    "headerCreateConnection": "Create connection",
+
     "connectionStateNotConnected": "not connected",
     "connectionStateConnected": "connected",
 
+    "connectionConfigCreateConnection": "Create connection",
     "connectionConfigConnetionName": "Connection Name",
     "connectionConfigHost": "Host",
     "connectionConfigPort": "Port",

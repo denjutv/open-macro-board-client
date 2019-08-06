@@ -1,12 +1,18 @@
-import { CONFIG_OPEN_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE, CONNECTION_MANAGER_OPEN,
-    CONNECTION_MANAGER_CLOSE, SET_ACTIVE_CONNECTION } from "../action/";
+import { CONFIG_START_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE, CONNECTION_MANAGER_OPEN,
+    CONNECTION_MANAGER_CLOSE, SET_ACTIVE_CONNECTION, CONNECTION_CONFIG_OPEN_NEW_DIALOG,
+    CONNECTION_CONFIG_CLOSE_NEW_DIALOG,
+    CONNECTION_CONFIG_OPEN_EDIT_DIALOG,
+    CONNECTION_CONFIG_CLOSE_EDIT_DIALOG } from "../action/";
 import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
 
 
 const defaultState = {
-    currentConnection: null,
+    currentConnectionName: null,
+    editConnection: null,
     isOpen: false,
-    activeConnectionName: ""
+    activeConnectionName: "",
+    isNewConnectionOpen: false,
+    isEditConnectionOpen: false
 };
 
 const emptyConnection = {
@@ -29,15 +35,15 @@ const connectionManagerReducer = ( state = defaultState, action ) =>
 
     switch( action.type )
     {
-        case CONFIG_OPEN_NEW_CONNECTION:
-            newState = {...state, currentConnection: emptyConnection };
+        case CONFIG_START_NEW_CONNECTION:
+            newState = {...state, editConnection: emptyConnection };
         break;
         case CONFIG_CONNECTION_UPDATE:
-            newState = {...state, currentConnection: {...state.currentConnection } };
-            newState.currentConnection[action.fieldName] = action.value;
+            newState = {...state, editConnection: {...state.editConnection } };
+            newState.editConnection[action.fieldName] = action.value;
         break;
         case CONFIG_CONNECTION_SAVE:
-            newState = {...state, currentConnection: null };
+            newState = {...state, editConnection: null, isNewConnectionOpen: false, currentConnectionName: state.editConnection.name };
         break;
         case CONNECTION_MANAGER_OPEN:
             newState = {...state, isOpen: true };
@@ -48,6 +54,19 @@ const connectionManagerReducer = ( state = defaultState, action ) =>
         case SET_ACTIVE_CONNECTION:
             newState = {...state, activeConnectionName: action.connectionName };
         break;
+
+        case CONNECTION_CONFIG_OPEN_NEW_DIALOG:
+            newState = Object.assign( {}, state, {isNewConnectionOpen: true} );
+            break;
+        case CONNECTION_CONFIG_CLOSE_NEW_DIALOG:
+            newState = Object.assign( {}, state, {isNewConnectionOpen: false} );
+            break;
+        case CONNECTION_CONFIG_OPEN_EDIT_DIALOG:
+            newState = Object.assign( {}, state, {isEditConnectionOpen: true} );
+            break;
+        case CONNECTION_CONFIG_CLOSE_EDIT_DIALOG:
+            newState = Object.assign( {}, state, {isEditConnectionOpen: false} );
+            break;
     }
 
     return newState;

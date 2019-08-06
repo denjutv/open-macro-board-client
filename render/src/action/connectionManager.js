@@ -1,11 +1,11 @@
 import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
 
-export const CONFIG_OPEN_NEW_CONNECTION = "CONFIG_OPEN_NEW_CONNECTION";
+export const CONFIG_START_NEW_CONNECTION = "CONFIG_START_NEW_CONNECTION";
 
-export const openNewConnection = () =>
+export const startNewConnection = () =>
 {
     return {
-        type: CONFIG_OPEN_NEW_CONNECTION
+        type: CONFIG_START_NEW_CONNECTION
     }
 }
 
@@ -55,5 +55,45 @@ export const setActiveConnection = connectionName =>
     return {
         type: SET_ACTIVE_CONNECTION,
         connectionName
+    }
+}
+
+// open and close new connection dialog
+
+export const CONNECTION_CONFIG_OPEN_NEW_DIALOG = "CONNECTION_CONFIG_OPEN_NEW_DIALOG";
+
+export const openNewConnectionDialog = ( ) =>
+{
+    return {
+        type: CONNECTION_CONFIG_OPEN_NEW_DIALOG
+    }
+}
+
+export const CONNECTION_CONFIG_CLOSE_NEW_DIALOG = "CONNECTION_CONFIG_CLOSE_NEW_DIALOG";
+
+export const closeNewConnectionDialog = ( ) =>
+{
+    return {
+        type: CONNECTION_CONFIG_CLOSE_NEW_DIALOG
+    }
+}
+
+// open and close edit connection dialog
+
+export const CONNECTION_CONFIG_OPEN_EDIT_DIALOG = "CONNECTION_CONFIG_OPEN_EDIT_DIALOG";
+
+export const openEditConnectionDialog = ( ) =>
+{
+    return {
+        type: CONNECTION_CONFIG_OPEN_EDIT_DIALOG
+    }
+}
+
+export const CONNECTION_CONFIG_CLOSE_EDIT_DIALOG = "CONNECTION_CONFIG_CLOSE_EDIT_DIALOG";
+
+export const closeEditConnectionDialog = ( ) =>
+{
+    return {
+        type: CONNECTION_CONFIG_CLOSE_EDIT_DIALOG
     }
 }
