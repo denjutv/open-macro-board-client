@@ -54,7 +54,7 @@ function ConnectionManager( props )
           {/* todo: connectionState isLoading */}
           {
             props.connections.filter( connection => !connection.connected ).map( connection => (
-              <ConnectionEntryContainer connection={connection} connectionState="" hasSettingsButton={true} />
+              <ConnectionEntryContainer key={connection.name} connection={connection} connectionState="" hasSettingsButton={true} />
             ) )
           }
         </main>
