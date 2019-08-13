@@ -12,12 +12,17 @@ class ConnectionManager
     {
         let connection = null;
 
-        if( this.connections.hasOwnProperty( name ) )
+        if( this.existsConnectionByName( name ) )
         {
             connection = this.connections[ name ];
         }
 
         return connection;
+    }
+
+    existsConnectionByName( name )
+    {
+        return this.connections.hasOwnProperty( name );
     }
 
     loadConnections( config, store, sender )
@@ -52,7 +57,7 @@ class ConnectionManager
         buttons = buttons || this.config.get("defaultButtonPositions");
 
         // check if a conection with the connection name already exists
-        if( !this.connections.hasOwnProperty( connectionData.name ) )
+        if( !this.existsConnectionByName( connectionData.name ) )
         {
             this.connections[ connectionData.name ] = 
             {
