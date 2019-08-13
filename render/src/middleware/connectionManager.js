@@ -14,7 +14,7 @@ const connectionManagerMiddleware = ( { getState, dispatch } ) =>
 
         switch( action.type )
         {
-            // if a new connection is saved, that it as current connection
+            // if a new connection is saved, set it as current connection
             case CONFIG_CONNECTION_SAVE:
 
                 if( action.isNewConnection )
