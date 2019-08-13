@@ -44,7 +44,7 @@ const connectionManagerReducer = ( state = defaultState, action ) =>
             newState.editConnection[action.fieldName] = action.value;
         break;
         case CONFIG_CONNECTION_SAVE:
-            newState = {...state, editConnection: null, isNewConnectionOpen: false, currentConnectionName: state.editConnection.name };
+            newState = {...state, editConnection: null, isNewConnectionOpen: false, isEditConnectionOpen: false, currentConnectionName: state.editConnection.name };
         break;
         case CONNECTION_MANAGER_OPEN:
             newState = {...state, isOpen: true };
