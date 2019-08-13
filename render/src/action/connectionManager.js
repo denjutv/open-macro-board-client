@@ -83,18 +83,20 @@ export const closeNewConnectionDialog = ( ) =>
 
 export const CONNECTION_CONFIG_OPEN_EDIT_DIALOG = "CONNECTION_CONFIG_OPEN_EDIT_DIALOG";
 
-export const openEditConnectionDialog = ( ) =>
+export const openEditConnectionDialog = connection =>
 {
     return {
-        type: CONNECTION_CONFIG_OPEN_EDIT_DIALOG
+        type: CONNECTION_CONFIG_OPEN_EDIT_DIALOG,
+        connection
     }
 }
 
 export const CONNECTION_CONFIG_CLOSE_EDIT_DIALOG = "CONNECTION_CONFIG_CLOSE_EDIT_DIALOG";
 
-export const closeEditConnectionDialog = ( ) =>
+export const closeEditConnectionDialog = connection =>
 {
     return {
-        type: CONNECTION_CONFIG_CLOSE_EDIT_DIALOG
+        type: CONNECTION_CONFIG_CLOSE_EDIT_DIALOG,
+        connection
     }
 }

@@ -17,12 +17,15 @@ function ConnectionEntry( props )
         <span onClick={props.setActiveConnection.bind(null, connection.name )}>edit</span>
       </div>}
       { props.hasSettingsButton && <div className="connectionItem__settings">
-        <span>settings</span>
+        <span onClick={props.openEditDialog}>settings</span>
       </div>}
 
-      <div className="connectionItem__button">
-          <button>trennen</button>
-      </div>
+      {
+        props.hasDisconnectButton &&
+        <div className="connectionItem__button">
+            <button>trennen</button>
+        </div>
+      }
     </div>
   );
 }

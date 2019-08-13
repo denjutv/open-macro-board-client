@@ -5,7 +5,7 @@ const mapStateToProps = ( state, ownProps ) =>
 ({
     isConnectionManagerOpen: state.connectionManager.isOpen,
     isNewConnectionOpen: state.connectionManager.isNewConnectionOpen,
-    isEditConnectionOpen: state.connectionManager.isEditConnectionOpen
+    isEditConnectionOpen: state.connectionManager.isEditConnectionOpen,
 });
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>

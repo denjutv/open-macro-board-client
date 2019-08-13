@@ -42,7 +42,7 @@ function ConnectionManager( props )
 
           {
             props.connections.filter( connection => connection.connected && connection.name !== props.activeConnectionName ).map( connection => (
-              <ConnectionEntryContainer connection={connection} connectionState="isConnected" hasEditButton={true} />
+              <ConnectionEntryContainer key={connection.name} connection={connection} connectionState="isConnected" hasEditButton={true} hasDisconnectButton={true} />
             ) )
           }
 
@@ -54,7 +54,7 @@ function ConnectionManager( props )
           {/* todo: connectionState isLoading */}
           {
             props.connections.filter( connection => !connection.connected ).map( connection => (
-              <ConnectionEntryContainer key={connection.name} connection={connection} connectionState="" hasSettingsButton={true} />
+              <ConnectionEntryContainer key={connection.name} connection={connection} connectionState="" hasSettingsButton={true} openEditDialog={props.openEditConnectionDialog.bind(null, connection)} />
             ) )
           }
         </main>

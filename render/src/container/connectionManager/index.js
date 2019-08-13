@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ConnectionManager from "../../component/connectionManager";
-import { closeConnectionManager } from "../../action/"
+import { closeConnectionManager, openEditConnectionDialog } from "../../action/";
 
 const mapStateToProps = ( state, ownProps ) =>
 ({
@@ -10,7 +10,8 @@ const mapStateToProps = ( state, ownProps ) =>
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
-    close: () => dispatch( closeConnectionManager() )
+    close: () => dispatch( closeConnectionManager() ),
+    openEditConnectionDialog: connection => dispatch( openEditConnectionDialog(connection) )
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )( ConnectionManager );
