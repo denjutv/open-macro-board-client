@@ -29,6 +29,17 @@ export const saveCurrentConnection = ( currentConnection, isNewConnection = fals
     }
 }
 
+export const updateCurrentConnection = ( currentConnection, originalConnectionName ) =>
+{
+    return {
+        type: CONFIG_CONNECTION_SAVE,
+        currentConnection,
+        isNewConnection: false,
+        originalConnectionName
+    }
+}
+
+
 // open and close connection list
 
 export const CONNECTION_MANAGER_OPEN = "CONNECTION_MANAGER_OPEN";

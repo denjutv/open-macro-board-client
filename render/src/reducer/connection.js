@@ -1,4 +1,4 @@
-import { CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED } from "../../../shared/actionType";
+import { CONNECTION_ADD, CONNECTION_UPDATE, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED } from "../../../shared/actionType";
 import ConnectionHelper from "../../../shared/helper/connection";
 /**
  * Handles all events, that change the buttons.
@@ -16,6 +16,9 @@ const connectionReducer = ( state = [], action ) =>
             newState = state.slice();
             newState.push( action.connection );
         break;
+        case CONNECTION_UPDATE:
+            newState = updateConnectin( state, action );
+            break;
         case CONNECTION_CONNECTED:
         case CONNECTION_DISCONNECTED:
             newState = setConnectionState( state, action.currentConnection.name, action.type === CONNECTION_CONNECTED ) || state;
@@ -25,10 +28,27 @@ const connectionReducer = ( state = [], action ) =>
     return newState;
 };
 
+function updateConnectin( state, action )
+{
+    let index = ConnectionHelper.getConnectionIndexByName( state, action.originalConnectionName );
+    let newState = state;
+
+    if( index >= 0 )
+    {
+        newState = state.slice();
+        
+        // todo: handle buttons
+
+        newState[index] = action.connection;;
+    }
+
+    return newState;
+}
+
 function setConnectionState( state, connectionName, connectionState )
 {
     let index = ConnectionHelper.getConnectionIndexByName( state, connectionName );
-    let newState = null;
+    let newState = state;
     let connection = null;
 
     if( index >= 0 )

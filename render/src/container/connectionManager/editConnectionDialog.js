@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ConnectionDialog from "../../component/connectionManager/connectionDialog";
-import { closeEditConnectionDialog, updateConfigConnection, saveCurrentConnection } from "../../action/";
+import { closeEditConnectionDialog, updateConfigConnection, updateCurrentConnection } from "../../action/";
 import { validateConnectionConfig } from "../../connectionConfigValidator";
 
 const mapStateToProps = ( state, ownProps ) =>
@@ -16,7 +16,7 @@ const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
     close: () => dispatch( closeEditConnectionDialog() ),
     updateConfigConnection: ( event ) => dispatch( updateConfigConnection(event.target.name, event.target.value) ),
-    successHandler: ( currentConnection, connections, originalConnectionName ) => validateConnectionConfig( currentConnection, connections, originalConnectionName ) ? alert(123) : null
+    successHandler: ( currentConnection, connections, originalConnectionName ) => validateConnectionConfig( currentConnection, connections, originalConnectionName ) ? dispatch( updateCurrentConnection( Object.assign( {}, currentConnection ), originalConnectionName ) ) : null
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )( ConnectionDialog );

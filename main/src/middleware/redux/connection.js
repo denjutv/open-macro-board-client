@@ -1,4 +1,4 @@
-const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED, GET_SETTINGS } = require( "../../../../shared/actionType" );
+const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_UPDATE, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED, CONNECTION_UPDATE_FAILED, GET_SETTINGS } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
 const { BUTTON_PRESSED, BUTTONS_UPDATE, SETTINGS_SEND } = require( "../../action/" );
 const app = require( "../../app" );
@@ -12,26 +12,20 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
     return ( next ) => (action) => 
     {
         let result = null;
-        let newAction = {};
+        
         let connection = null;
 
         switch( action.type )
         {
             // intercept CONFIG_CONNECTION_SAVE action and 
             case CONFIG_CONNECTION_SAVE:
-                if( app.connectionManager.addConnection( action.currentConnection, action.buttons, dispatch, action.event.sender ) )
+                if( action.isNewConnection )
                 {
-                    newAction.type = CONNECTION_ADD;
-                    newAction.connection = Object.assign( {}, action.currentConnection );
-                    newAction.connection.connected = false;
-                    
-                    action.event.sender.send( MAIN_RENDER_CHANNEL, newAction );
-
-                    result = next( newAction );
+                    result = addConnection(action, dispatch, next);
                 }
                 else
                 {
-                    action.event.sender.send( MAIN_RENDER_CHANNEL, { type: CONNECTION_REFUSED, connection: Object.assign( {}, action.currentConnection ) } );
+                    result = updateConnection(action, dispatch, next)
                 }
                 
             break;
@@ -61,6 +55,51 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
     };
 };
 
+function addConnection( action, dispatch, next )
+{
+    const  newAction = {};
+    let result = null;
 
+    if( app.connectionManager.addConnection( action.currentConnection, action.buttons, dispatch, action.event.sender ) )
+    {
+        newAction.type = CONNECTION_ADD;
+        newAction.connection = Object.assign( {}, action.currentConnection );
+        newAction.connection.connected = false;
+        
+        action.event.sender.send( MAIN_RENDER_CHANNEL, newAction );
+
+        result = next( newAction );
+    }
+    else
+    {
+        action.event.sender.send( MAIN_RENDER_CHANNEL, { type: CONNECTION_REFUSED, connection: Object.assign( {}, action.currentConnection ) } );
+    }
+
+    return result;
+}
+
+function updateConnection( action, dispatch, next )
+{
+    const  newAction = {};
+    let result = null;
+
+    if( app.connectionManager.updateConnection( action.currentConnection, action.buttons, action.originalConnectionName ) )
+    {
+        newAction.type = CONNECTION_UPDATE;
+        newAction.connection = Object.assign( {}, action.currentConnection );
+        newAction.connection.connected = false;
+        newAction.originalConnectionName = action.originalConnectionName;
+        
+        action.event.sender.send( MAIN_RENDER_CHANNEL, newAction );
+
+        result = next( newAction );
+    }
+    else
+    {
+        action.event.sender.send( MAIN_RENDER_CHANNEL, { type: CONNECTION_UPDATE_FAILED, connection: Object.assign( {}, action.currentConnection ) } );
+    }
+
+    return result;
+}
 
 module.exports = connectionMiddleware;

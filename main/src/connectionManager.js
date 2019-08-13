@@ -43,6 +43,7 @@ class ConnectionManager
                     type: CONFIG_CONNECTION_SAVE,
                     currentConnection: connection.connectionData,
                     buttons: connection.buttons,
+                    isNewConnection: true,
                     event: {
                         sender
                     }
@@ -73,6 +74,26 @@ class ConnectionManager
         return added;
     }
 
+    updateConnection( connectionData, buttons, originalConnectionName )
+    {
+        let isUpdated = false;
+        const originalName = originalConnectionName || connectionData.name;
+
+        if( this.existsConnectionByName( originalName) )
+        {
+            const connection = this.getConnectionByName( originalName );
+
+            connection.connectionData = connectionData;
+
+            // todo update buttons ???
+
+            isUpdated = true;
+            this.saveToConfig();
+        }
+        
+        return isUpdated;
+    }
+
     saveToConfig()
     {
         if( this.config )
@@ -88,7 +109,6 @@ class ConnectionManager
 
         socket.on( "action", ( action ) =>
         {
-            // console.log( "action", action );
             dispatch( action );
         });
 
@@ -116,31 +136,8 @@ class ConnectionManager
             dispatch( action );
         });
 
-        // socket.on( "connect_error", ( error ) =>
-        // {
-        //     console.log( "error", error );
-        // });
-
         return socket;
     }
-
-    // createConnection( connectionData, dispatch, sender )
-    // {
-    //     const { CONNECTION_CONNECTED } = require( "../../shared/actionType" );
-
-    //     setTimeout( () =>
-    //     {
-    //         console.log( "connected" );
-    //         let action = {};
-    //         action.type = CONNECTION_CONNECTED;
-    //         action.currentConnection = Object.assign( {}, connectionData );
-    //         action.sender = sender;
-    //         dispatch( action ); 
-    //     },
-    //     250 );
-
-    //     return {};
-    // }
 };
 
 module.exports = ConnectionManager;
