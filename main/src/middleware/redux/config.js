@@ -4,7 +4,7 @@ const app = require( "../../app" );
 
 
 /**
- * Middleware that listens for CONFIG_CONNECTION_SAVE event to pass that event via ipc to the main process.
+ * Middleware that listens for SET_SETTINGS event to store values to the config.
  */
 const configMiddleware = ( { getState, dispatch } ) =>
 {
@@ -15,7 +15,6 @@ const configMiddleware = ( { getState, dispatch } ) =>
 
         switch( action.type )
         {
-            // intercept CONFIG_CONNECTION_SAVE action and 
             case SET_SETTINGS:
                 app.conf.set( action.name, action.value );
             break;
