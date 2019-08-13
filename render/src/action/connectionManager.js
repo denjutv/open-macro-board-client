@@ -93,10 +93,9 @@ export const openEditConnectionDialog = connection =>
 
 export const CONNECTION_CONFIG_CLOSE_EDIT_DIALOG = "CONNECTION_CONFIG_CLOSE_EDIT_DIALOG";
 
-export const closeEditConnectionDialog = connection =>
+export const closeEditConnectionDialog = () =>
 {
     return {
-        type: CONNECTION_CONFIG_CLOSE_EDIT_DIALOG,
-        connection
+        type: CONNECTION_CONFIG_CLOSE_EDIT_DIALOG
     }
 }
