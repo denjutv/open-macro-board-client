@@ -4,6 +4,7 @@
     "add": "hinzufügen",
 
     "headerCreateConnection": "Verbindung hinzufügen",
+    "headerChooseConnection": "Verbindung auswählen",
 
     "connectionStateNotConnected": "nicht verbunden",
     "connectionStateConnected": "verbunden",

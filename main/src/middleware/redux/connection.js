@@ -1,4 +1,6 @@
-const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_UPDATE, CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONNECTION_REFUSED, CONNECTION_UPDATE_FAILED, GET_SETTINGS } = require( "../../../../shared/actionType" );
+const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_UPDATE, CONNECTION_CONNECTED,
+    CONNECTION_DISCONNECTED, CONNECTION_REFUSED, CONNECTION_UPDATE_FAILED,
+    GET_SETTINGS, CONNECTION_REMOVE } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
 const { BUTTON_PRESSED, BUTTONS_UPDATE, SETTINGS_SEND } = require( "../../action/" );
 const app = require( "../../app" );
@@ -35,6 +37,10 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
                 action.sender.send( MAIN_RENDER_CHANNEL, action );
                 result = next( action );
             break;
+            case CONNECTION_REMOVE:
+                app.connectionManager.removeConnection( action.connectionName );
+                result = next( action );
+                break;
             case BUTTON_PRESSED:
                 console.log( action.buttonIndex );
                 break;

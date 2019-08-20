@@ -44,8 +44,8 @@ function NewConnectionDialog( props )
                     </main>
 
                     <footer className="modal__footer">
-                        <div className="ctaButton ctaButton--layer ctaButton--half ctaButton--cancel" onClick={props.close}>
-                            {t("abort")}
+                        <div className="ctaButton ctaButton--layer ctaButton--half ctaButton--cancel" onClick={props.removeHandler.bind(null,props.originalConnectionName)}>
+                            {t(props.removeButtonLabel)}
                         </div>
                         <div className="ctaButton ctaButton--layer ctaButton--half ctaButton--add" onClick={props.saveHandler.bind(null,props.connection,props.connections, props.originalConnectionName)}>
                             <span>{props.saveButtonIcon}</span>{t(props.saveButtonLabel)}

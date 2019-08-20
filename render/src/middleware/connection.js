@@ -1,5 +1,5 @@
 import electron from "electron";
-import { CONFIG_CONNECTION_SAVE, GET_SETTINGS } from "../../../shared/actionType";
+import { CONFIG_CONNECTION_SAVE, GET_SETTINGS, CONNECTION_REMOVE } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
 import translator from "../translator";
 
@@ -15,6 +15,7 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
         switch( action.type )
         {
             case CONFIG_CONNECTION_SAVE:
+            case CONNECTION_REMOVE:
                 electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, action );
                 result = next( action );
             break;

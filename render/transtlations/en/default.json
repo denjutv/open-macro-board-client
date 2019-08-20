@@ -4,6 +4,7 @@
     "add": "add",
 
     "headerCreateConnection": "Create connection",
+    "headerChooseConnection": "Choose connection",
 
     "connectionStateNotConnected": "not connected",
     "connectionStateConnected": "connected",

@@ -1,4 +1,4 @@
-import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
+import { CONFIG_CONNECTION_SAVE, CONNECTION_REMOVE } from "../../../shared/actionType";
 
 export const CONFIG_START_NEW_CONNECTION = "CONFIG_START_NEW_CONNECTION";
 
@@ -39,6 +39,13 @@ export const updateCurrentConnection = ( currentConnection, originalConnectionNa
     }
 }
 
+export const removeConnection = ( connectionName ) =>
+{
+    return {
+        type: CONNECTION_REMOVE,
+        connectionName
+    }
+}
 
 // open and close connection list
 

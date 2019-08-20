@@ -97,6 +97,28 @@ class ConnectionManager
         return isUpdated;
     }
 
+    removeConnection( connectionName )
+    {
+        let isRemoved = false;
+
+        console.log(1);
+        if( this.existsConnectionByName( connectionName ) )
+        {
+            console.log(2);
+            delete this.connections[ connectionName ];
+            isRemoved = true;
+            this.saveToConfig();
+
+            // check if removed connection was the current connection
+            if( connectionName === this.config.get( "currentConnectionName" ) )
+            {
+                this.config.set( "currentConnectionName", null );
+            }
+        }
+
+        return isRemoved;
+    }
+
     saveToConfig()
     {
         if( this.config )

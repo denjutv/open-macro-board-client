@@ -12,10 +12,16 @@ function Header( props )
                     Open Macro Deck
                 </div>
                 {
-                    ( props.hasConnections && props.currentConnection ) ?
+                    props.hasConnections ?
                     <div className="header__connection header__connection--connected" onClick={props.openConnectionManager}>
-                        {props.currentConnection.host}
-                        <span>{props.currentConnection.name}</span>
+                        {
+                            props.currentConnection ?
+                            <React.Fragment>
+                                {props.currentConnection.host}
+                                <span>{props.currentConnection.name}</span>
+                            </React.Fragment>
+                            : <span>{t("headerChooseConnection")}</span>
+                        }
                     </div>
                     :
                     <div className="header__connection header__connection--connected" onClick={props.openNewConnectionDialog}>
