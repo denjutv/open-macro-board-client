@@ -47,8 +47,8 @@ function NewConnectionDialog( props )
                         <div className="ctaButton ctaButton--layer ctaButton--half ctaButton--cancel" onClick={props.close}>
                             {t("abort")}
                         </div>
-                        <div className="ctaButton ctaButton--layer ctaButton--half ctaButton--add" onClick={props.successHandler.bind(null,props.connection,props.connections, props.originalConnectionName)}>
-                            <span>{props.successButtonIcon}</span>{t(props.successButtonLabel)}
+                        <div className="ctaButton ctaButton--layer ctaButton--half ctaButton--add" onClick={props.saveHandler.bind(null,props.connection,props.connections, props.originalConnectionName)}>
+                            <span>{props.saveButtonIcon}</span>{t(props.saveButtonLabel)}
                         </div>
                     </footer>
 

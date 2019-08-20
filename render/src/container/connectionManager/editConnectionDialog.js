@@ -7,8 +7,8 @@ const mapStateToProps = ( state, ownProps ) =>
 ({
     connection: state.connectionManager.editConnection,
     connections: state.connections,
-    successButtonLabel: "save",
-    successButtonIcon: "save",
+    saveButtonLabel: "save",
+    saveButtonIcon: "save",
     originalConnectionName: state.connectionManager.originalEditConnectionName
 });
 
@@ -16,7 +16,7 @@ const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
     close: () => dispatch( closeEditConnectionDialog() ),
     updateConfigConnection: ( event ) => dispatch( updateConfigConnection(event.target.name, event.target.value) ),
-    successHandler: ( currentConnection, connections, originalConnectionName ) => validateConnectionConfig( currentConnection, connections, originalConnectionName ) ? dispatch( updateCurrentConnection( Object.assign( {}, currentConnection ), originalConnectionName ) ) : null
+    saveHandler: ( currentConnection, connections, originalConnectionName ) => validateConnectionConfig( currentConnection, connections, originalConnectionName ) ? dispatch( updateCurrentConnection( Object.assign( {}, currentConnection ), originalConnectionName ) ) : null
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )( ConnectionDialog );
