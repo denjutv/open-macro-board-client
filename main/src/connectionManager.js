@@ -74,7 +74,7 @@ class ConnectionManager
         return added;
     }
 
-    updateConnection( connectionData, buttons, originalConnectionName )
+    updateConnection( connectionData, buttons, dispatch, sender, originalConnectionName )
     {
         let isUpdated = false;
         const originalName = originalConnectionName || connectionData.name;
@@ -84,6 +84,9 @@ class ConnectionManager
             const connection = this.getConnectionByName( originalName );
 
             connection.connectionData = connectionData;
+            
+            // connection.socket.disconnect(true);
+            connection.socket = this.createConnection( connectionData, buttons, dispatch, sender );
 
             // todo update buttons ???
 

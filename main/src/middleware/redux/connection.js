@@ -83,7 +83,7 @@ function updateConnection( action, dispatch, next )
     const  newAction = {};
     let result = null;
 
-    if( app.connectionManager.updateConnection( action.currentConnection, action.buttons, action.originalConnectionName ) )
+    if( app.connectionManager.updateConnection( action.currentConnection, action.buttons, dispatch, action.event.sender, action.originalConnectionName ) )
     {
         newAction.type = CONNECTION_UPDATE;
         newAction.connection = Object.assign( {}, action.currentConnection );
