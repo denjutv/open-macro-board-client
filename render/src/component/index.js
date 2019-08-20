@@ -6,24 +6,14 @@ import EditConnectionDialogContainer from "../container/connectionManager/editCo
 
 function OpenMacroBoardClient( props )
 {
-    const markup = [ <Wrapper key="wrapper" /> ];
-    
-    if( props.isConnectionManagerOpen )
-    {
-        markup.push( <ConnectionManagerContainer key="connectionsManager" /> );
-    }
-
-    if( props.isNewConnectionOpen )
-    {
-        markup.push( <NewConnectionDialogContainer key="newConnectionDialog" /> );
-    }
-
-    if( props.isEditConnectionOpen )
-    {
-        markup.push( <EditConnectionDialogContainer key="editConnectionDialog" /> );
-    }
-    
-    return markup;
+    return(
+        <React.Fragment>
+            <Wrapper key="wrapper" />
+            {props.isConnectionManagerOpen && <ConnectionManagerContainer key="connectionsManager" /> }
+            {props.isNewConnectionOpen && <NewConnectionDialogContainer key="newConnectionDialog" /> }
+            {props.isEditConnectionOpen && <EditConnectionDialogContainer key="editConnectionDialog" /> }
+        </React.Fragment>
+    );
 };
 
 export default OpenMacroBoardClient;
