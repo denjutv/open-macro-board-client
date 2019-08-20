@@ -3,7 +3,7 @@ import ConnectionEntryContainer from "../../container/connectionManager/connecti
 
 function ConnectionManager( props )
 {
-  let activeConnection = props.connections.filter( connection => connection.name === props.activeConnectionName && connection.connected );
+  let activeConnection = props.connections.filter( connection => connection.name === props.currentConnectionName && connection.connected );
 
   if( activeConnection.length === 1 )
   {
@@ -41,7 +41,7 @@ function ConnectionManager( props )
 
 
           {
-            props.connections.filter( connection => connection.connected && connection.name !== props.activeConnectionName ).map( connection => (
+            props.connections.filter( connection => connection.connected && connection.name !== props.currentConnectionName ).map( connection => (
               <ConnectionEntryContainer key={connection.name} connection={connection} connectionState="isConnected" hasEditButton={true} hasDisconnectButton={true} />
             ) )
           }

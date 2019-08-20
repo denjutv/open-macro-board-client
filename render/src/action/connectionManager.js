@@ -60,12 +60,12 @@ export const closeConnectionManager = ( ) =>
     }
 }
 
-export const SET_ACTIVE_CONNECTION = "SET_ACTIVE_CONNECTION";
+export const SET_CURRENT_CONNECTION = "SET_CURRENT_CONNECTION";
 
-export const setActiveConnection = connectionName =>
+export const setCurrentConnection = connectionName =>
 {
     return {
-        type: SET_ACTIVE_CONNECTION,
+        type: SET_CURRENT_CONNECTION,
         connectionName
     }
 }

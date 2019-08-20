@@ -1,5 +1,5 @@
 import { CONFIG_START_NEW_CONNECTION, CONFIG_CONNECTION_UPDATE, CONNECTION_MANAGER_OPEN,
-    CONNECTION_MANAGER_CLOSE, SET_ACTIVE_CONNECTION, CONNECTION_CONFIG_OPEN_NEW_DIALOG,
+    CONNECTION_MANAGER_CLOSE, SET_CURRENT_CONNECTION, CONNECTION_CONFIG_OPEN_NEW_DIALOG,
     CONNECTION_CONFIG_CLOSE_NEW_DIALOG,
     CONNECTION_CONFIG_OPEN_EDIT_DIALOG,
     CONNECTION_CONFIG_CLOSE_EDIT_DIALOG } from "../action/";
@@ -11,7 +11,6 @@ const defaultState = {
     editConnection: null,
     originalEditConnectionName: null,
     isOpen: false,
-    activeConnectionName: "",
     isNewConnectionOpen: false,
     isEditConnectionOpen: false
 };
@@ -52,8 +51,8 @@ const connectionManagerReducer = ( state = defaultState, action ) =>
         case CONNECTION_MANAGER_CLOSE:
             newState = {...state, isOpen: false };
         break;
-        case SET_ACTIVE_CONNECTION:
-            newState = {...state, activeConnectionName: action.connectionName };
+        case SET_CURRENT_CONNECTION:
+            newState = {...state, currentConnectionName: action.connectionName };
         break;
 
         case GET_SETTINGS:

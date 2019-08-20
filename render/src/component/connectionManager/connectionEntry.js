@@ -14,7 +14,7 @@ function ConnectionEntry( props )
       </div>
 
       { props.hasEditButton && <div className="connectionItem__settings">
-        <span onClick={props.setActiveConnection.bind(null, connection.name )}>edit</span>
+        <span onClick={props.setCurrentConnection.bind(null, connection.name )}>edit</span>
       </div>}
       { props.hasSettingsButton && <div className="connectionItem__settings">
         <span onClick={props.openEditDialog}>settings</span>

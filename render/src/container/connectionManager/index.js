@@ -5,7 +5,7 @@ import { closeConnectionManager, openEditConnectionDialog, startNewConnection, o
 const mapStateToProps = ( state, ownProps ) =>
 ({
     connections: state.connections,
-    activeConnectionName: state.connectionManager.activeConnectionName
+    currentConnectionName: state.connectionManager.currentConnectionName
 });
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>

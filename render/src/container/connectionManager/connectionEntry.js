@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ConnectionEntry from "../../component/connectionManager/connectionEntry";
-import { setActiveConnection } from "../../action/"
+import { setCurrentConnection } from "../../action/"
 
 const mapStateToProps = ( state, ownProps ) =>
 ({
@@ -12,7 +12,7 @@ const mapStateToProps = ( state, ownProps ) =>
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
-    setActiveConnection: connectionName => dispatch( setActiveConnection(connectionName) )
+    setCurrentConnection: connectionName => dispatch( setCurrentConnection(connectionName) )
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )( ConnectionEntry );

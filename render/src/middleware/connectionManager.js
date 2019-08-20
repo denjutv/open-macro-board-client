@@ -1,4 +1,5 @@
 import electron from "electron";
+import { SET_CURRENT_CONNECTION } from "../action/";
 import { CONFIG_CONNECTION_SAVE, SET_SETTINGS } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
 
@@ -24,6 +25,10 @@ const connectionManagerMiddleware = ( { getState, dispatch } ) =>
                 }
                 result = next( action );
             break;
+            case SET_CURRENT_CONNECTION:
+                electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, {type: SET_SETTINGS, name: "currentConnectionName", value: action.connectionName } );
+                result = next( action );
+                break;
             default:
                 result = next( action );
         }
