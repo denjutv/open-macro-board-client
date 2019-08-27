@@ -9,7 +9,8 @@ function Board( props )
             <div className="openDeck">
 
                 {/* <!-- head --> */}
-                <div className="openDeck__name" contentEditable="true"></div>
+                {/* <div className="openDeck__name" contentEditable="true"></div> */}
+                <div className="openDeck__name">{props.connection.name}</div>
 
                 <div className="openDeck__outer">
                     <div className="openDeck__inner">

@@ -12,7 +12,7 @@ function Main( props )
                 {
                     props.currentConnection &&
                     <React.Fragment>
-                        <BoardContainer />
+                        <BoardContainer connection={props.currentConnection} />
                         
                         <ButtonSettings />
                     </React.Fragment>

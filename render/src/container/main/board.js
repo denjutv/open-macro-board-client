@@ -4,7 +4,7 @@ import Board from "../../component/main/board";
 
 const mapStateToProps = ( state, ownProps ) =>
 ({
-    
+    connection: ownProps.connection
 });
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>
