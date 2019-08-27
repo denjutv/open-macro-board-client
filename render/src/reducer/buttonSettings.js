@@ -1,4 +1,5 @@
-import { SELECT_BUTTON } from "../action/buttonSettings";
+import { SELECT_BUTTON, SET_CURRENT_CONNECTION } from "../action/";
+import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
 
 const defaultState = {
     selectedButtonIndex: 0
@@ -12,6 +13,10 @@ const buttonSettingsReducer = ( state = defaultState, action ) =>
     {
         case SELECT_BUTTON:
             newState = Object.assign( {}, state, {selectedButtonIndex: action.index} );
+        break;
+        case SET_CURRENT_CONNECTION: // no break
+        case CONFIG_CONNECTION_SAVE:
+            newState = Object.assign( {}, state, {selectedButtonIndex: 0} );
         break;
     }
 
