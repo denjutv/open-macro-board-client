@@ -101,10 +101,8 @@ class ConnectionManager
     {
         let isRemoved = false;
 
-        console.log(1);
         if( this.existsConnectionByName( connectionName ) )
         {
-            console.log(2);
             delete this.connections[ connectionName ];
             isRemoved = true;
             this.saveToConfig();
