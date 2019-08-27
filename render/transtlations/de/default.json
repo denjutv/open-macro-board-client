@@ -15,5 +15,12 @@
     "connectionConfigPort": "Port",
     "connectionConfigPassword": "Passwort",
     "connectionConfigPasswordRepeat": "Passwort (Wiederholung)",
-    "connectionConfigSaveButton": "Speichen"
+    "connectionConfigSaveButton": "Speichen",
+
+    "buttonSettingsHeadline": "Einstellungen",
+    "buttonSettingsName": "Name",
+    "buttonSettingsIcon": "Icon",
+    "buttonSettingsLabel": "Label",
+    "buttonSettingsScale": "Skalieren",
+    "buttonSettingsTranslation": "Ausrichtung"
 }
