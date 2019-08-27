@@ -1,13 +1,13 @@
 import React from "react";
 import HeaderContainer from "../container/header";
-import Main from "./main/";
+import MainContainer from "../container/main/";
 
 function Wrapper( props )
 {
     return (
         <div className="wrapper">
             <HeaderContainer />
-            <Main />
+            <MainContainer />
         </div>
     )
 };

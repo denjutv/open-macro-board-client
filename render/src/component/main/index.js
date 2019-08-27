@@ -1,5 +1,5 @@
 import React from "react";
-import Board from "./board";
+import BoardContainer from "../../container/main/board";
 import ButtonSettings from "./buttonSettings";
 
 function Main( props )
@@ -9,9 +9,14 @@ function Main( props )
         <main className="main">
 		    <div className="main__inner">
 
-			    <Board />
-                
-                <ButtonSettings />
+                {
+                    props.currentConnection &&
+                    <React.Fragment>
+                        <BoardContainer />
+                        
+                        <ButtonSettings />
+                    </React.Fragment>
+                }
 
 		    </div>
 	    </main>
