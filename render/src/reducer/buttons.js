@@ -1,4 +1,4 @@
-import { CONNECTION_ADD } from "../../../shared/actionType";
+import { CONNECTION_ADD, CONNECTION_REMOVE } from "../../../shared/actionType";
 
 
 /**
@@ -17,6 +17,13 @@ const buttonReducer = ( state = {}, action ) =>
             newState = Object.assign( {}, state );
             newState[action.connection.name] = action.buttons;
             console.log(newState);
+            break;
+        case CONNECTION_REMOVE:
+            if( state[action.connectionName] )
+            {
+                newState = Object.assign( {}, state );
+                delete newState[action.connectionName];
+            }
             break;
     }
 
