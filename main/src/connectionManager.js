@@ -20,6 +20,15 @@ class ConnectionManager
         return connection;
     }
 
+    existsConnectionBySocket( host, port )
+    {
+        return Object.entries(this.connections)
+            .filter(
+                ([connectionName, connection]) => connection.connectionData.host.replace("localhost", "127.0.0.1") === host.replace("localhost", "127.0.0.1")
+                                                    && connection.connectionData.port === port
+            ).length > 0;
+    }
+
     existsConnectionByName( name )
     {
         return this.connections.hasOwnProperty( name );
@@ -58,7 +67,9 @@ class ConnectionManager
         buttons = buttons || this.config.get("defaultButtonSettings");
 
         // check if a conection with the connection name already exists
-        if( !this.existsConnectionByName( connectionData.name ) )
+        if( !this.existsConnectionByName( connectionData.name )
+            && !this.existsConnectionBySocket( connectionData.host, connectionData.port )
+            )
         {
             this.connections[ connectionData.name ] = 
             {
