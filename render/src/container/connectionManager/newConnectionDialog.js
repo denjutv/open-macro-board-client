@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import ConnectionDialog from "../../component/connectionManager/connectionDialog";
 import { closeNewConnectionDialog, updateConfigConnection, saveCurrentConnection } from "../../action/";
-import { validateConnectionConfig } from "../../connectionConfigValidator";
+import { validateConnectionConfig } from "../../connectionHelper";
 
 const mapStateToProps = ( state, ownProps ) =>
 ({

@@ -45,3 +45,10 @@ export function validateConnectionConfig( currentConnection, connections, origin
 
     return isValid;
 }
+
+export function getCurrentConnectionByName( connections, name )
+{
+    const filtered = connections.filter( connection => connection.name === name );
+
+    return filtered.length === 1 ? filtered[0] : null
+}
