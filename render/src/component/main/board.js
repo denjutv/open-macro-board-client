@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./button";
 
 function Board( props )
 {
@@ -19,15 +20,26 @@ function Board( props )
                         <div className="openDeck__grid">
 
                             {/* <!-- hidden feature --> */}
-                            <div className="openDeckFullscreen">
-                                <img src="opendeck-Dateien/boobs2.gif" alt="" />
-                            </div>
+                            {/* <div className="openDeckFullscreen">
+                                <img src="" alt="" />
+                            </div> */}
 
-                            <div className="openDeck__item isActive">
+                            {
+                                props.buttons.map( (button, index) =>
+                                    <Button
+                                        key={index}
+                                        isSelected={props.selectedButtonIndex === index}
+                                        button={button}
+                                        index={index}
+                                        selectButton={props.selectButton}
+                                    />
+                                )
+                            }
+                            {/* <div className="openDeck__item isActive">
                                 <div className="openDeck__iteminner">
                                     <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)"}}>
                                         <div className="openDeckButton__icon">
-                                            <img src="opendeck-Dateien/youtube.png" alt="" />
+                                            <img src="" alt="" />
                                         </div>
                                         <div className="openDeckButton__label">
                                             YouTube
@@ -39,7 +51,7 @@ function Board( props )
                                 <div className="openDeck__iteminner">
                                     <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)"}}>
                                         <div className="openDeckButton__icon">
-                                            <img src="opendeck-Dateien/photoshop.png" alt="" />
+                                            <img src="" alt="" />
                                         </div>
                                         <div className="openDeckButton__label">
                                             Photoshop
@@ -51,7 +63,7 @@ function Board( props )
                                 <div className="openDeck__iteminner">
                                     <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)"}}>
                                         <div className="openDeckButton__icon">
-                                            <img src="opendeck-Dateien/ebay.png" alt="" />
+                                            <img src="" alt="" />
                                         </div>
                                         <div className="openDeckButton__label">
                                             eBay
@@ -72,13 +84,13 @@ function Board( props )
                             <div className="openDeck__item"><span></span></div>
                             <div className="openDeck__item"><span></span></div>
                             <div className="openDeck__item"><span></span></div>
-                            <div className="openDeck__item"><span></span></div>
+                            <div className="openDeck__item"><span></span></div> */}
                         </div>
                     </div>
 
-                    <div className="openDeck__new">
+                    {/* <div className="openDeck__new">
                         <span>Ordneransicht</span>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>
