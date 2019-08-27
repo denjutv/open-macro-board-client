@@ -1,8 +1,11 @@
 import React from "react";
 import ConnectionEntryContainer from "../../container/connectionManager/connectionEntry";
+import { withTranslation } from "react-i18next";
 
 function ConnectionManager( props )
 {
+  const {t} = props;
+
   let activeConnection = props.connections.filter( connection => connection.name === props.currentConnectionName && connection.connected );
 
   if( activeConnection.length === 1 )
@@ -20,14 +23,14 @@ function ConnectionManager( props )
       <div className="connectionManager__sidebar">
 
         <header className="connectionManager__header">
-          <h2>Verbindungen verwalten</h2>
+          <h2>{t("connectionManagerHeadline")}</h2>
           <div className="connectionManager__close" onClick={props.close}>close</div>
         </header>
 
         <main className="connectionManager__main">
 
           <div className="connectionHead">
-            <span>aktiv</span>
+            <span>{t("connectionManagerActive")}</span>
           </div>
 
           {
@@ -36,7 +39,7 @@ function ConnectionManager( props )
           }
 
           <div className="connectionHead">
-            <span>Verbunden</span>
+            <span>{t("connectionManagerConnected")}</span>
           </div>
 
 
@@ -48,7 +51,7 @@ function ConnectionManager( props )
 
 
           <div className="connectionHead">
-            <span>nicht verbunden</span>
+            <span>{t("connectionManagerNotConnected")}</span>
           </div>
 
           {/* todo: connectionState isLoading */}
@@ -61,7 +64,7 @@ function ConnectionManager( props )
 
         <footer className="connectionManager__footer">
           <div className="ctaButton" onClick={props.openNewConnectionDialog}>
-            <span>add</span>Neue Verbindung
+            <span>add</span>{t("connectionManagerNewConnectionButton")}
           </div>
         </footer>
 
@@ -73,4 +76,4 @@ function ConnectionManager( props )
   );
 }
 
-export default ConnectionManager;
+export default withTranslation()(ConnectionManager);

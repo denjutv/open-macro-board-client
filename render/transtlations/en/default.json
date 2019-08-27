@@ -9,6 +9,12 @@
     "connectionStateNotConnected": "not connected",
     "connectionStateConnected": "connected",
 
+    "connectionManagerHeadline": "Manage connections",
+    "connectionManagerActive": "activ",
+    "connectionManagerConnected": "connected",
+    "connectionManagerNotConnected": "not connected",
+    "connectionManagerNewConnectionButton": "New connection",
+
     "connectionConfigCreateConnection": "Create connection",
     "connectionConfigConnetionName": "Connection Name",
     "connectionConfigHost": "Host",
