@@ -55,7 +55,7 @@ class ConnectionManager
     addConnection( connectionData, buttons, dispatch, sender )
     {
         let added = false;
-        buttons = buttons || this.config.get("defaultButtonPositions");
+        buttons = buttons || this.config.get("defaultButtonSettings");
 
         // check if a conection with the connection name already exists
         if( !this.existsConnectionByName( connectionData.name ) )

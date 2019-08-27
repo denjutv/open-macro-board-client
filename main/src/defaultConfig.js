@@ -1,4 +1,4 @@
-const defaultButtonPositions = [];
+const defaultButtonSettings = [];
 // width
 const pixelPerMmWidth = 7.4074074074;
 const buttonSizeInPixelWidth = 20 * pixelPerMmWidth;
@@ -15,7 +15,21 @@ for( let row=0; row < 3; ++row )
 {
     for( let column=0; column < 5; ++column )
     {
-        defaultButtonPositions.push( { left: column * buttonSizeIncGapInPixelWidth, top: row * buttonSizeIncGapInPixelHeight, width: buttonSizeInPixelWidth, height: buttonSizeInPixelHeight } );
+        defaultButtonSettings.push(
+            {
+                left: column * buttonSizeIncGapInPixelWidth,
+                top: row * buttonSizeIncGapInPixelHeight,
+                width: buttonSizeInPixelWidth,
+                height: buttonSizeInPixelHeight,
+
+                iconScale: 0,
+                iconTranslationX: 0,
+                iconTranslationY: 0,
+
+                labelScale: 0,
+                labelTranslationX: 0,
+                labelTranslationY: 0
+            } );
     }
 }
 
@@ -28,7 +42,7 @@ module.exports =
         fullscreen: true
     },
     language: "en",
-    defaultButtonPositions,
+    defaultButtonSettings,
     showDevTools: true,
     port: 3000
 };

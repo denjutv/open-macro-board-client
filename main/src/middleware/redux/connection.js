@@ -70,6 +70,7 @@ function addConnection( action, dispatch, next )
     {
         newAction.type = CONNECTION_ADD;
         newAction.connection = Object.assign( {}, action.currentConnection );
+        newAction.buttons = app.connectionManager.getConnectionByName( action.currentConnection.name ).buttons;
         newAction.connection.connected = false;
         
         action.event.sender.send( MAIN_RENDER_CHANNEL, newAction );
