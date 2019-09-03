@@ -22,6 +22,8 @@ for( let row=0; row < 3; ++row )
                 width: buttonSizeInPixelWidth,
                 height: buttonSizeInPixelHeight,
 
+                isUsed: false,
+
                 iconScale: 1,
                 iconTranslationX: 0,
                 iconTranslationY: 0,
