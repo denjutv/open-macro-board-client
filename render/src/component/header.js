@@ -9,7 +9,7 @@ function Header( props )
         <header className="header">
             <div className="header__inner">
                 <div className="header__logo">
-                    Open Macro Deck
+                    Open Macro Board
                 </div>
                 {
                     props.hasConnections ?
