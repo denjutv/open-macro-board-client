@@ -19,7 +19,7 @@ function ButtonSettings( props )
                     <div className="deckBuilder__inner">
 
                             <div className="deckForm__input">
-                                <input type="text" value="YouTube" />
+                                <input type="text" name="label" value={props.button.label} onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="test1">{t("buttonSettingsName")}</label>
                             </div>
 
@@ -30,21 +30,21 @@ function ButtonSettings( props )
                             </div>
 
                             <div className="deckForm__range">
-                                <input type="range" value="0.6" min="0" max="2" step="0.05" />
+                                <input type="range" name="iconScale" value={props.button.iconScale} min="0" max="2" step="0.05" onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="range">{t("buttonSettingsScale")}</label>
-                                <output>0.6</output>
+                                <output>{props.button.iconScale}</output>
                             </div>
 
                             <div className="deckForm__range">
-                                <input type="range" value="-15" min="-200" max="200" step="1" />
+                                <input type="range" name="iconTranslationX" value={props.button.iconTranslationX} min="-200" max="200" step="1" onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="range">{t("buttonSettingsTranslation")} X</label>
-                                <output>-15</output>
+                                <output>{props.button.iconTranslationX}</output>
                             </div>
 
                             <div className="deckForm__range">
-                                <input type="range" value="0" min="-200" max="200" step="1" />
+                                <input type="range" name="iconTranslationY" value={props.button.iconTranslationY} min="-200" max="200" step="1" onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="range">{t("buttonSettingsTranslation")} Y</label>
-                                <output>0</output>
+                                <output>{props.button.iconTranslationY}</output>
                             </div>
 
                         </div>
@@ -57,21 +57,21 @@ function ButtonSettings( props )
 
 
                             <div className="deckForm__range">
-                                <input type="range" value="1" min="0" max="2" step="0.05" />
+                                <input type="range" name="labelScale" value={props.button.labelScale} min="0" max="2" step="0.05" onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="range">{t("buttonSettingsScale")}</label>
-                                <output>1</output>
+                                <output>{props.button.labelScale}</output>
                             </div>
 
                             <div className="deckForm__range">
-                                <input type="range" value="25" min="-200" max="200" step="1" />
+                                <input type="range" name="labelTranslationX" value={props.button.labelTranslationX} min="-200" max="200" step="1" onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="range">{t("buttonSettingsTranslation")} X</label>
-                                <output>25</output>
+                                <output>{props.button.labelTranslationX}</output>
                             </div>
 
                             <div className="deckForm__range">
-                                <input type="range" value="0" min="-200" max="200" step="1" />
+                                <input type="range" name="labelTranslationY" value={props.button.labelTranslationY} min="-200" max="200" step="1" onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="range">{t("buttonSettingsTranslation")} Y</label>
-                                <output>0</output>
+                                <output>{props.button.labelTranslationY}</output>
                             </div>
 
                         </div>

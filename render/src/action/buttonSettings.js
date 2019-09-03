@@ -7,3 +7,16 @@ export const selectButton = index =>
         index
     }
 }
+
+export const UPDATE_BUTTON = "UPDATE_BUTTON";
+
+export const updateButton = ( connectionName, index, field, value ) =>
+{
+    return {
+        type: UPDATE_BUTTON,
+        connectionName,
+        index,
+        field,
+        value
+    }
+}

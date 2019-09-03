@@ -1,6 +1,6 @@
 import React from "react";
 import BoardContainer from "../../container/main/board";
-import ButtonSettings from "./buttonSettings";
+import ButtonSettingsContainer from "../../container/main/buttonSettings";
 
 function Main( props )
 {
@@ -14,7 +14,7 @@ function Main( props )
                     <React.Fragment>
                         <BoardContainer connection={props.currentConnection} />
                         
-                        <ButtonSettings />
+                        <ButtonSettingsContainer connection={props.currentConnection} />
                     </React.Fragment>
                 }
 
