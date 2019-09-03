@@ -1,5 +1,4 @@
-import { CONNECTION_ADD, CONNECTION_REMOVE } from "../../../shared/actionType";
-import { UPDATE_BUTTON } from "../action/";
+import { CONNECTION_ADD, CONNECTION_REMOVE, UPDATE_BUTTON } from "../../../shared/actionType";
 
 
 /**
@@ -26,15 +25,11 @@ const buttonReducer = ( state = {}, action ) =>
             }
             break;
         case UPDATE_BUTTON:
-            if( typeof state[action.connectionName] !== "undefined" && typeof state[action.connectionName][action.index] !== "undefined"
-                && typeof state[action.connectionName][action.index][action.field] !== "undefined" )
-            {
-                newState = {... state};
-                newState[action.connectionName] = newState[action.connectionName].slice();
-                newState[action.connectionName][action.index] = {... newState[action.connectionName][action.index]};
-                newState[action.connectionName][action.index][action.field] = action.value;
-                newState[action.connectionName][action.index].isUsed = true;
-            }
+            newState = {... state};
+            newState[action.connectionName] = newState[action.connectionName].slice();
+            newState[action.connectionName][action.index] = {... newState[action.connectionName][action.index]};
+            newState[action.connectionName][action.index][action.field] = action.value;
+            newState[action.connectionName][action.index].isUsed = true;
             break;
     }
 

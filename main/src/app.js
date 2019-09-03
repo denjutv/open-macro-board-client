@@ -51,8 +51,9 @@ class App
         const rootReducer = require( "./reducer" );
         const connectionMiddleware = require( "./middleware/redux/connection" );
         const configMiddleware = require( "./middleware/redux/config" );
+        const buttonsMiddleware = require( "./middleware/redux/buttons" );
         // const initialState = {buttons: this.conf.get("buttons")};
-        this.store = createStore( rootReducer, /*initialState ,*/ applyMiddleware( connectionMiddleware, configMiddleware )  );
+        this.store = createStore( rootReducer, /*initialState ,*/ applyMiddleware( connectionMiddleware, configMiddleware, buttonsMiddleware )  );
     }
 
     initMainWindow()

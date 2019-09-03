@@ -8,7 +8,7 @@ export const selectButton = index =>
     }
 }
 
-export const UPDATE_BUTTON = "UPDATE_BUTTON";
+import { UPDATE_BUTTON } from "../../../shared/actionType";
 
 export const updateButton = ( connectionName, index, field, value ) =>
 {
