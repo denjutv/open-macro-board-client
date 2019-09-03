@@ -33,6 +33,7 @@ const buttonReducer = ( state = {}, action ) =>
                 newState[action.connectionName] = newState[action.connectionName].slice();
                 newState[action.connectionName][action.index] = {... newState[action.connectionName][action.index]};
                 newState[action.connectionName][action.index][action.field] = action.value;
+                newState[action.connectionName][action.index].isUsed = true;
             }
             break;
     }
