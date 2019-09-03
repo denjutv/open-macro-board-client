@@ -22,11 +22,12 @@ for( let row=0; row < 3; ++row )
                 width: buttonSizeInPixelWidth,
                 height: buttonSizeInPixelHeight,
 
-                iconScale: 0,
+                iconScale: 1,
                 iconTranslationX: 0,
                 iconTranslationY: 0,
 
-                labelScale: 0,
+                label: "",
+                labelScale: 1,
                 labelTranslationX: 0,
                 labelTranslationY: 0
             } );
