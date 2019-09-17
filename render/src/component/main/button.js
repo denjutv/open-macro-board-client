@@ -12,15 +12,21 @@ function Button( props )
                 <div className="openDeck__iteminner">
                     <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)" }}>
                     {/* style="transform: "translate(-50%, -50%)" scale(0.604);" */}
-                        <div className="openDeckButton__icon">
-                            <img src="" alt="" />
+                        <div className="openDeckButton__icon" style={
+                            {
+                                marginTop: `${props.button.iconTranslationY}px`,
+                                marginLeft: `${props.button.iconTranslationX}px`,
+                                transform: `translate(-50%, -50%) scale(${props.button.iconScale})`
+                            }
+                        }>
+                            <img src={props.button.iconPath} />
                         </div>
                         <div className="openDeckButton__label"
                             style={
                                 {
                                     marginBottom: `${props.button.labelTranslationY}px`,
                                     marginLeft: `${props.button.labelTranslationX}px`,
-                                    transform: ` scale(${props.button.labelScale})`
+                                    transform: `scale(${props.button.labelScale})`
                                 }
                             }
                         >

@@ -17,7 +17,8 @@ const buttonsMiddleware = ( { getState, dispatch } ) =>
         {
             case UPDATE_BUTTON:
                 if( typeof state.buttons[action.connectionName] !== "undefined" && typeof state.buttons[action.connectionName][action.index] !== "undefined"
-                    && typeof state.buttons[action.connectionName][action.index][action.field] !== "undefined" )
+                    //&& typeof state.buttons[action.connectionName][action.index][action.field] !== "undefined"
+                    )
                 {
                     electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, action );
                     result = next( action );

@@ -40,7 +40,9 @@ function updateButton( connection, action )
 {
     const buttons = connection.buttons;
 
-    if( typeof buttons[action.index] !== "undefined" && typeof buttons[action.index][action.field] !== "undefined" )
+    if( typeof buttons[action.index] !== "undefined"
+        // && typeof buttons[action.index][action.field] !== "undefined"
+        )
     {
         buttons[action.index][action.field] = action.value;
         buttons[action.index].isUsed = true;

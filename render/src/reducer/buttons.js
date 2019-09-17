@@ -25,6 +25,7 @@ const buttonReducer = ( state = {}, action ) =>
             }
             break;
         case UPDATE_BUTTON:
+            console.log(action);
             newState = {... state};
             newState[action.connectionName] = newState[action.connectionName].slice();
             newState[action.connectionName][action.index] = {... newState[action.connectionName][action.index]};

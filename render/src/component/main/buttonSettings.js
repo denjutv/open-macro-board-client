@@ -29,6 +29,8 @@ function ButtonSettings( props )
                                 <span>image</span>{t("buttonSettingsIcon")}
                             </div>
 
+                            <button onClick={props.openIconFileDialog.bind(null, props.button.iconPath, props.selectedButtonIndex)}>Icon hochladen</button>
+
                             <div className="deckForm__range">
                                 <input type="range" name="iconScale" value={props.button.iconScale} min="0" max="2" step="0.05" onChange={props.updateButton.bind(null, props.selectedButtonIndex)} />
                                 <label htmlFor="range">{t("buttonSettingsScale")}</label>
