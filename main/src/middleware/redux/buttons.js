@@ -44,9 +44,53 @@ function updateButton( connection, action )
         // && typeof buttons[action.index][action.field] !== "undefined"
         )
     {
+        if( action.field === "iconPath" )
+        {
+            sendIconToBoard( connection.connectionData, action.index, action.value );
+        }
         buttons[action.index][action.field] = action.value;
         buttons[action.index].isUsed = true;
         app.connectionManager.saveToConfig();
+    }
+}
+
+async function sendIconToBoard( connectionData, buttonIndex, pathToIcon )
+{
+    
+    const axios = require( "axios" );
+    const fs = require( "fs" );
+
+    const iconStream = fs.createReadStream(pathToIcon);
+
+    try
+    {
+        const FormData = require('form-data');
+        const formData = new FormData();
+        formData.append("icon", iconStream, {
+            filename: pathToIcon
+        });
+        const response = await axios.post(`http://${connectionData.host}:${connectionData.port}/icon/upload/${buttonIndex}`, formData, {
+            headers: formData.getHeaders()
+        });
+    
+        console.log( response );
+    }
+    catch( error )
+    {
+        if( error.errno === 'ECONNREFUSED' )
+        {
+            console.log( "cant connect to board" );
+            // todo
+        }
+        else if( error.response && error.response.status === 404 )
+        {
+            console.log( "404" );
+            // todo
+        }
+        else
+        {
+            console.log( error );
+        }
     }
 }
 
