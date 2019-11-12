@@ -30,5 +30,6 @@
     "buttonSettingsScale": "Scale",
     "buttonSettingsTranslation": "Translate",
     "buttonSettingsVisualsTab": "Visuals",
-    "buttonSettingsMacroTab": "Macro"
+    "buttonSettingsMacroTab": "Macro",
+    "buttonSettingsBackgroundColor": "Background Color"
 }

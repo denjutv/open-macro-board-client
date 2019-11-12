@@ -10,7 +10,12 @@ function Button( props )
             {
                 props.button.isUsed ?
                 <div className="openDeck__iteminner">
-                    <div className="openDeckButton" style={{transform: "translate(-50%, -50%) scale(0.604)" }}>
+                    <div className="openDeckButton"
+                        style={{
+                            transform: "translate(-50%, -50%) scale(0.604)",
+                            backgroundColor: props.button.backgroundColor
+                        }}
+                    >
                     {/* style="transform: "translate(-50%, -50%)" scale(0.604);" */}
                         <div className="openDeckButton__icon" style={
                             {

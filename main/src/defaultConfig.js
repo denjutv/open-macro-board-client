@@ -31,7 +31,9 @@ for( let row=0; row < 3; ++row )
                 label: "",
                 labelScale: 1,
                 labelTranslationX: 0,
-                labelTranslationY: 0
+                labelTranslationY: 0,
+
+                backgroundColor: "#000000"
             } );
     }
 }

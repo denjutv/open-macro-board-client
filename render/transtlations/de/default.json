@@ -30,5 +30,6 @@
     "buttonSettingsScale": "Skalieren",
     "buttonSettingsTranslation": "Ausrichtung",
     "buttonSettingsVisualsTab": "Aussehen",
-    "buttonSettingsMacroTab": "Parameter"
+    "buttonSettingsMacroTab": "Parameter",
+    "buttonSettingsBackgroundColor": "Hintergrundfarbe"
 }

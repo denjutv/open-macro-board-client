@@ -13,6 +13,7 @@ const mapStateToProps = ( state, ownProps ) =>
 const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
     updateButton: ( index, event ) => dispatch( updateButton( ownProps.connection.name, index, event.target.name, event.target.value ) ),
+    updateButtonEx: ( index, name, value ) => dispatch( updateButton( ownProps.connection.name, index, name, value ) ),
     openIconFileDialog: (iconPath, buttonIndex) => {
         remote.dialog.showOpenDialog({
             properties: ['openFile'],

@@ -35,6 +35,7 @@ function ButtonSettings( props )
                                 <li className={props.activeTabIndex === 0 ? "isActive" : ""}>
                                     <VisualButtonSettings button={props.button}
                                         updateButton={props.updateButton}
+                                        updateButtonEx={props.updateButtonEx}
                                         selectedButtonIndex={props.selectedButtonIndex}
                                         openIconFileDialog={props.openIconFileDialog}
                                     />
