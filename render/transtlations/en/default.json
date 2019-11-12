@@ -28,5 +28,7 @@
     "buttonSettingsIcon": "Icon",
     "buttonSettingsLabel": "Label",
     "buttonSettingsScale": "Scale",
-    "buttonSettingsTranslation": "Translate"
+    "buttonSettingsTranslation": "Translate",
+    "buttonSettingsVisualsTab": "Visuals",
+    "buttonSettingsMacroTab": "Macro"
 }

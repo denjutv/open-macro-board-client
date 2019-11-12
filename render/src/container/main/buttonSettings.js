@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import ButtonSettings from "../../component/main/buttonSettings";
-import { updateButton } from "../../action/";
+import { updateButton, settingsSetActiveTab } from "../../action/";
 import { remote } from "electron"
 
 const mapStateToProps = ( state, ownProps ) =>
 ({
     selectedButtonIndex: state.buttonSettings.selectedButtonIndex,
+    activeTabIndex: state.buttonSettings.activeTabIndex,
     button: state.buttons[ownProps.connection.name][state.buttonSettings.selectedButtonIndex]
 });
 
@@ -24,7 +25,8 @@ const mapDispatchToProps = ( dispatch, ownProps ) =>
                 dispatch( updateButton( ownProps.connection.name, buttonIndex, "iconPath", files[0] ) );
             }
         });
-    }
+    },
+    setActiveTab: tabIndex => dispatch( settingsSetActiveTab(tabIndex) )
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )( ButtonSettings );

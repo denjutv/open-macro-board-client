@@ -28,5 +28,7 @@
     "buttonSettingsIcon": "Icon",
     "buttonSettingsLabel": "Label",
     "buttonSettingsScale": "Skalieren",
-    "buttonSettingsTranslation": "Ausrichtung"
+    "buttonSettingsTranslation": "Ausrichtung",
+    "buttonSettingsVisualsTab": "Aussehen",
+    "buttonSettingsMacroTab": "Parameter"
 }

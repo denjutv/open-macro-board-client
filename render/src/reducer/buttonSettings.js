@@ -1,8 +1,9 @@
-import { SELECT_BUTTON, SET_CURRENT_CONNECTION } from "../action/";
+import { SELECT_BUTTON, SET_CURRENT_CONNECTION, SETTINGS_SET_ACTIVE_TAB } from "../action/";
 import { CONFIG_CONNECTION_SAVE } from "../../../shared/actionType";
 
 const defaultState = {
-    selectedButtonIndex: 0
+    selectedButtonIndex: 0,
+    activeTabIndex: 0
 }
 
 const buttonSettingsReducer = ( state = defaultState, action ) =>
@@ -17,6 +18,9 @@ const buttonSettingsReducer = ( state = defaultState, action ) =>
         case SET_CURRENT_CONNECTION: // no break
         case CONFIG_CONNECTION_SAVE:
             newState = Object.assign( {}, state, {selectedButtonIndex: 0} );
+        break;
+        case SETTINGS_SET_ACTIVE_TAB:
+            newState = Object.assign( {}, state, {activeTabIndex: action.tabIndex} );
         break;
     }
 
