@@ -33,10 +33,12 @@ export const settingsSetActiveTab = tabIndex =>
 
 export const UPDATE_MACRO_INPUT = "UPDATE_MACRO_INPUT";
 
-export const updateMacroInput = event =>
+export const updateMacroInput = (connectionName, index, event ) =>
 {
     return {
         type: UPDATE_MACRO_INPUT,
+        connectionName,
+        index,
         event
     }
 }

@@ -1,6 +1,7 @@
 import electron from "electron";
 import { UPDATE_BUTTON } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
+import { UPDATE_MACRO_INPUT } from "../action/";
 
 
 /**
@@ -15,6 +16,15 @@ const buttonsMiddleware = ( { getState, dispatch } ) =>
 
         switch( action.type )
         {
+            case UPDATE_MACRO_INPUT:
+                action.field = "macro";
+                action.value = Object.assign( {}, state.buttons[action.connectionName][action.index][action.field] );
+                action.value[action.event.target.name] = action.event.target.value;
+                
+                action.type = UPDATE_BUTTON;
+
+                delete action.event;
+                // no break to continue UPDATE_BUTTON
             case UPDATE_BUTTON:
                 if( typeof state.buttons[action.connectionName] !== "undefined" && typeof state.buttons[action.connectionName][action.index] !== "undefined"
                     //&& typeof state.buttons[action.connectionName][action.index][action.field] !== "undefined"
