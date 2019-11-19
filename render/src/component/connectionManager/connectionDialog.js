@@ -6,7 +6,7 @@ function NewConnectionDialog( props )
     const {t} = props;
 
     return (
-        <div className="modal">
+        <div className="modal isOpen">
             <div className="modal__inner">
                 <div className="modal__overlay" onClick={props.close}></div>
 
