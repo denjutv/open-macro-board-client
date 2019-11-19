@@ -33,7 +33,9 @@ for( let row=0; row < 3; ++row )
                 labelTranslationX: 0,
                 labelTranslationY: 0,
 
-                backgroundColor: "#000000"
+                backgroundColor: "#000000",
+
+                macro: {}
             } );
     }
 }
