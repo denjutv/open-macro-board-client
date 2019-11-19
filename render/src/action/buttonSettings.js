@@ -30,3 +30,13 @@ export const settingsSetActiveTab = tabIndex =>
         tabIndex
     }
 }
+
+export const UPDATE_MACRO_INPUT = "UPDATE_MACRO_INPUT";
+
+export const updateMacroInput = event =>
+{
+    return {
+        type: UPDATE_MACRO_INPUT,
+        event
+    }
+}
