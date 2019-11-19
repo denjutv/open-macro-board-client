@@ -31,5 +31,8 @@
     "buttonSettingsTranslation": "Ausrichtung",
     "buttonSettingsVisualsTab": "Aussehen",
     "buttonSettingsMacroTab": "Parameter",
-    "buttonSettingsBackgroundColor": "Hintergrundfarbe"
+    "buttonSettingsBackgroundColor": "Hintergrundfarbe",
+
+    "macroSettingsKey": "Schlüssel",
+    "macroSettingsValue": "Wert"
 }

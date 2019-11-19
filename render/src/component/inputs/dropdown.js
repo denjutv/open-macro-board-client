@@ -10,7 +10,7 @@ function Dropdown(props)
                         <option key={index} value={option.value}>{option.label}</option>
                     )}
                 </select>
-                <label htmlFor={props.name}>Select</label>
+                <label htmlFor={props.name}>{props.label}</label>
             </div>
         </div>
     )

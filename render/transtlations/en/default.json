@@ -31,5 +31,8 @@
     "buttonSettingsTranslation": "Translate",
     "buttonSettingsVisualsTab": "Visuals",
     "buttonSettingsMacroTab": "Macro",
-    "buttonSettingsBackgroundColor": "Background Color"
+    "buttonSettingsBackgroundColor": "Background Color",
+
+    "macroSettingsKey": "Key",
+    "macroSettingsValue": "Value"
 }
