@@ -1,5 +1,6 @@
 import React from "react";
 import VisualButtonSettings from "./visualButtonSettings";
+import MacroButtonSettings from "./macroButtonSettings";
 import { withTranslation } from "react-i18next";
 
 function ButtonSettings( props )
@@ -38,6 +39,13 @@ function ButtonSettings( props )
                                         updateButtonEx={props.updateButtonEx}
                                         selectedButtonIndex={props.selectedButtonIndex}
                                         openIconFileDialog={props.openIconFileDialog}
+                                    />
+                                </li>
+                                <li className={props.activeTabIndex === 1 ? "isActive" : ""}>
+                                    <MacroButtonSettings button={props.button}
+                                        updateButton={props.updateButton}
+                                        updateButtonEx={props.updateButtonEx}
+                                        selectedButtonIndex={props.selectedButtonIndex}
                                     />
                                 </li>
                             </ul>
