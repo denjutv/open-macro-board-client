@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import CheckboxGroup from "../../component/inputs/checkboxGroup";
+import CheckboxGroup from "../../component/input/checkboxGroup";
 import { updateMacroInput } from "../../action";
 
 const mapStateToProps = ( state, ownProps ) => ownProps;
