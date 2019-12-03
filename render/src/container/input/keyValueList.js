@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import KeyValueList from "../../component/inputs/keyValueList";
+import KeyValueList from "../../component/input/keyValueList";
 import { updateMacroInput } from "../../action";
 
 const mapStateToProps = ( state, ownProps ) => ownProps;
