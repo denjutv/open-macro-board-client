@@ -2,9 +2,9 @@ import React from "react";
 import Dropdown from "../../container/input/dropdown";
 import Text from "../../container/input/text";
 import Textarea from "../../container/input/textarea";
-import Checkbox from "../input/checkbox";
+import Checkbox from "../../container/input/checkbox";
 import CheckboxGroup from "../input/checkboxGroup";
-import RadioGroup from "../input/radioGroup";
+import RadioGroup from "../../container/input/radioGroup";
 import KeyValueList from "../input/keyValueList";
 
 function MacroButtonSettings(props)
@@ -30,17 +30,17 @@ function MacroButtonSettings(props)
     return (
         <div className="deckBuilder__inner">
 
-            <Text name="Bar" value="dfjksdlkd" label="Bar" />
+            <Text name="Bar" label="Bar" />
 
             <Dropdown name="foo" label="Foo" options={[{value:0,label:"option1"},{value:1,label:"option2"},{value:2,label:"option3"}]} />
 
-            <Textarea name="Test" value="dfjksdlkd<br/>sfsfdsfsdf\n\rsfdsfsdf" label="Test" />
+            <Textarea name="Test" label="Test" />
 
-            <Checkbox name="mycheck" checked={true} label="mycheck" />
+            <Checkbox name="mycheck" label="mycheck" />
 
             <CheckboxGroup headline="Ich bin eine Überschrift!!" checkboxes={checkboxes} />
 
-            <RadioGroup headline="Radio Gaga" value="2" radios={radios} />
+            <RadioGroup headline="Radio Gaga" name="radioGaga" radios={radios} />
 
             <KeyValueList name="list" headline="Wunschliste" list={list} />
         </div>

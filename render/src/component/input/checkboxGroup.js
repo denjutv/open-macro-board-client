@@ -1,5 +1,5 @@
 import React from "react";
-import Checkbox from "./checkbox";
+import Checkbox from "../../container/input/checkbox";
 
 function CheckboxGroup(props)
 {
@@ -10,7 +10,7 @@ function CheckboxGroup(props)
             </div>
             {
                 props.checkboxes.map( (checkbox) =>
-                    <Checkbox key={checkbox.name} name={checkbox.name} label={checkbox.label} checked={checkbox.checked} />
+                    <Checkbox key={checkbox.name} name={checkbox.name} label={checkbox.label} />
                 )
             }
         </div>

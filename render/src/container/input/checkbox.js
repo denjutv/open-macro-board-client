@@ -1,12 +1,5 @@
 import { connect } from "react-redux";
 import Checkbox from "../../component/input/checkbox";
-import { updateMacroInput } from "../../action";
-
-const mapStateToProps = ( state, ownProps ) => ownProps;
-
-const mapDispatchToProps = ( dispatch, ownProps ) =>
-({
-    updateInput: event => dispatch( updateMacroInput(event) )
-});
+import { mapStateToProps, mapDispatchToProps } from "./index";
 
 export default connect( mapStateToProps, mapDispatchToProps )( Checkbox );

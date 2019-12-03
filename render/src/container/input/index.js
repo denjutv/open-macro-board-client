@@ -12,7 +12,8 @@ export const mapStateToProps = ( state, ownProps ) => {
     return Object.assign({}, ownProps, {
         connectionName,
         selectedButtonIndex: state.buttonSettings.selectedButtonIndex,
-        value
+        value,
+        checked: value ? true : false
     });
 }
 

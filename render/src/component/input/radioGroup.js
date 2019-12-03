@@ -2,10 +2,11 @@ import React from "react";
 
 function Radio(props)
 {
+    const id = `${props.groupName}_${props.name}`;
     return (
         <div className="deckForm__radio">
-            <input id={props.name} name={props.groupName} type="radio" value={props.value} checked={props.checked} />
-            <label htmlFor={props.name}></label>
+            <input id={id} name={props.groupName} type="radio" value={props.value} checked={props.checked} onChange={props.updateInput} />
+            <label htmlFor={id}></label>
             <span>{props.label}</span>
         </div>
     );
@@ -24,9 +25,10 @@ function RadioGroup( props )
                         key={radio.name}
                         name={radio.name}
                         groupName={props.name}
-                        value={props.value}
+                        value={radio.value}
                         label={radio.label}
                         checked={props.value === radio.value}
+                        updateInput={props.updateInput.bind(null,props.connectionName,props.selectedButtonIndex)}
                     />
                 )
             }

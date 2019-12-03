@@ -1,12 +1,5 @@
 import { connect } from "react-redux";
 import RadioGroup from "../../component/input/radioGroup";
-import { updateMacroInput } from "../../action";
-
-const mapStateToProps = ( state, ownProps ) => ownProps;
-
-const mapDispatchToProps = ( dispatch, ownProps ) =>
-({
-    updateInput: event => dispatch( updateMacroInput(event) )
-});
+import { mapStateToProps, mapDispatchToProps } from "./index";
 
 export default connect( mapStateToProps, mapDispatchToProps )( RadioGroup );
