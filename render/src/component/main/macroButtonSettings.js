@@ -1,12 +1,48 @@
 import React from "react";
-import Dropdown from "../inputs/dropdown";
+import Dropdown from "../../container/input/dropdown";
+import Text from "../../container/input/text";
+import Textarea from "../../container/input/textarea";
+import Checkbox from "../input/checkbox";
+import CheckboxGroup from "../input/checkboxGroup";
+import RadioGroup from "../input/radioGroup";
+import KeyValueList from "../input/keyValueList";
 
 function MacroButtonSettings(props)
 {
+    const checkboxes = [
+        {name:"check1", label:"check1",checked:true},
+        {name:"check2", label:"check2",checked:false},
+        {name:"check3", label:"check3",checked:true}
+    ];
+
+    const radios = [
+        {name:"check1", label:"check1",value:"1"},
+        {name:"check2", label:"check2",value:"2"},
+        {name:"check3", label:"check3",value:"3"}
+    ];
+
+    const list = [
+        {checked:true, key:"entry1",value:"3"},
+        {checked:false, key:"entry2",value:"2"},
+        {checked:true, key:"entry3",value:"1"}
+    ];
+
     return (
         <div className="deckBuilder__inner">
-            <Dropdown name="foo" options={[{value:0,label:"option1"},{value:1,label:"option2"},{value:2,label:"option3"}]}
-                value={1} />
+
+            <Text name="Bar" value="dfjksdlkd" label="Bar" />
+
+            <Dropdown name="foo" label="Foo" options={[{value:0,label:"option1"},{value:1,label:"option2"},{value:2,label:"option3"}]} />
+
+            <Textarea name="Test" value="dfjksdlkd<br/>sfsfdsfsdf\n\rsfdsfsdf" label="Test" />
+
+            <Checkbox name="mycheck" checked={true} label="mycheck" />
+
+            <CheckboxGroup headline="Ich bin eine Überschrift!!" checkboxes={checkboxes} />
+
+            <RadioGroup headline="Radio Gaga" value="2" radios={radios} />
+
+            <KeyValueList name="list" headline="Wunschliste" list={list} />
         </div>
     );
 }
