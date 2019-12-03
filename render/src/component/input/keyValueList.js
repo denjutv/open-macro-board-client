@@ -8,18 +8,18 @@ function KeyValueEntry(props)
         <div className="openTable__row isActive">
             <div className="openTable__col openTable__col--chk">
                 <div className="deckForm__checkbox">
-                    <input id={id + ".checked"} name={id + ".checked"} type="checkbox" checked={props.checked} />
+                    <input id={id + ".checked"} name="checked" type="checkbox" checked={props.checked} onChange={props.updateInput} disabled={props.isLast} />
                     <label htmlFor={id + ".checked"}></label>
                 </div>
             </div>
             <div className="openTable__col">
                 <div className="deckForm__input deckForm__input--param">
-                    <input type="text" name={id + ".key"} value={props.entryKey} placeholder="Key" />
+                    <input type="text" name="key" value={props.entryKey} placeholder="Key" onChange={props.updateInput} />
                 </div>
             </div>
             <div className="openTable__col">
                 <div className="deckForm__input deckForm__input--param">
-                    <input type="text" name={id + ".value"} value={props.value} placeholder="Value" />
+                    <input type="text" name="value" value={props.value} placeholder="Value" onChange={props.updateInput} />
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@ function KeyValueList(props)
 {
     const {t} = props;
 
-    const list = props.list.slice();
+    const list = props.value.slice();
     list.push( {checked: true, name:"", key:"" } );
 
     return (
@@ -64,6 +64,8 @@ function KeyValueList(props)
                             value={entry.value}
                             keyPlaceholder={props.keyPlaceholder || ""}
                             valuePlaceholder={props.valuePlaceholder || ""}
+                            updateInput={props.updateInput.bind(null,props.connectionName,props.selectedButtonIndex,props.name,props.value,index)}
+                            isLast={index===list.length-1}
                         />
                     )
                 }

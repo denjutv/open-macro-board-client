@@ -19,7 +19,7 @@ const buttonsMiddleware = ( { getState, dispatch } ) =>
             case UPDATE_MACRO_INPUT:
                 action.field = "macro";
                 action.value = Object.assign( {}, state.buttons[action.connectionName][action.index][action.field] );
-                action.value[action.event.target.name] = event.target.type === "checkbox" ? event.target.checked : action.event.target.value;
+                action.value[action.event.target.name] = action.event.target.type === "checkbox" ? action.event.target.checked : action.event.target.value;
                 
                 action.type = UPDATE_BUTTON;
 

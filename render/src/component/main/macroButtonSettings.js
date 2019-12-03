@@ -5,7 +5,7 @@ import Textarea from "../../container/input/textarea";
 import Checkbox from "../../container/input/checkbox";
 import CheckboxGroup from "../input/checkboxGroup";
 import RadioGroup from "../../container/input/radioGroup";
-import KeyValueList from "../input/keyValueList";
+import KeyValueList from "../../container/input/keyValueList";
 
 function MacroButtonSettings(props)
 {
@@ -19,12 +19,6 @@ function MacroButtonSettings(props)
         {name:"check1", label:"check1",value:"1"},
         {name:"check2", label:"check2",value:"2"},
         {name:"check3", label:"check3",value:"3"}
-    ];
-
-    const list = [
-        {checked:true, key:"entry1",value:"3"},
-        {checked:false, key:"entry2",value:"2"},
-        {checked:true, key:"entry3",value:"1"}
     ];
 
     return (
@@ -42,7 +36,7 @@ function MacroButtonSettings(props)
 
             <RadioGroup headline="Radio Gaga" name="radioGaga" radios={radios} />
 
-            <KeyValueList name="list" headline="Wunschliste" list={list} />
+            <KeyValueList name="list" headline="Wunschliste" />
         </div>
     );
 }
