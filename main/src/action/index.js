@@ -1,1 +1,5 @@
-module.exports = Object.assign( require( "./connection" ), require( "./boardButton" ), require( "./settings" ) );
+module.exports = Object.assign(
+    require( "./connection" ),
+    require( "./boardButton" ),
+    require( "./settings" )
+);
