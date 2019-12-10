@@ -8,6 +8,7 @@ class App
         this.store = null;
 
         this.mainWindow = null;
+        this.macroMap = {};
 
         const ConnectionManager = require( "./connectionManager" );
         this.connectionManager = new ConnectionManager();
@@ -20,6 +21,9 @@ class App
 
         // init redux store
         this.initStore();
+
+        // init macros
+        this.initMacros();
 
         // ipc
         this.initIpc();
@@ -89,10 +93,34 @@ class App
 
             // send settings to render process
             const objFilter = require( "./objFilter" );
-            const {sendSettings} = require("./action/");
+            const {sendSettings, sendMacroMetaData} = require("./action/");
             const whiteList = ["language", "port", "currentConnectionName"];
             this.store.dispatch( sendSettings( objFilter( this.conf.all, whiteList ) ) );
+
+            this.store.dispatch( sendMacroMetaData( this.getMacroMetaDataMap() ) );
         });
+    }
+
+    initMacros()
+    {
+        this.macroMap = require( "./macro/" );
+
+        for( var macro in this.macroMap )
+        {
+            this.macroMap[macro] = new this.macroMap[macro]();
+        }
+    }
+
+    getMacroMetaDataMap()
+    {
+        const macroMetaData = {};
+
+        for( var macro in this.macroMap )
+        {
+            macroMetaData[macro] = this.macroMap[macro].getMetaData();
+        }
+
+        return macroMetaData;
     }
 };
 

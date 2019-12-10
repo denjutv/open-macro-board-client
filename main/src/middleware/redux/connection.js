@@ -1,8 +1,8 @@
 const { CONFIG_CONNECTION_SAVE, CONNECTION_ADD, CONNECTION_UPDATE, CONNECTION_CONNECTED,
     CONNECTION_DISCONNECTED, CONNECTION_REFUSED, CONNECTION_UPDATE_FAILED,
-    GET_SETTINGS, CONNECTION_REMOVE } = require( "../../../../shared/actionType" );
+    GET_SETTINGS, CONNECTION_REMOVE, GET_MACRO_META_DATA } = require( "../../../../shared/actionType" );
 const { MAIN_RENDER_CHANNEL } = require( "../../../../shared/channel" );
-const { SETTINGS_SEND } = require( "../../action/" );
+const { SETTINGS_SEND, MACRO_META_DATA_SEND } = require( "../../action/" );
 const app = require( "../../app" );
 
 
@@ -40,7 +40,10 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
                 result = next( action );
                 break;
             case SETTINGS_SEND:
-                    app.mainWindow.getSender().send( MAIN_RENDER_CHANNEL, Object.assign( action, {type:GET_SETTINGS} ) );
+                app.mainWindow.getSender().send( MAIN_RENDER_CHANNEL, Object.assign( action, {type:GET_SETTINGS} ) );
+                break;
+            case MACRO_META_DATA_SEND:
+                app.mainWindow.getSender().send( MAIN_RENDER_CHANNEL, Object.assign( action, {type:GET_MACRO_META_DATA} ) );
                 break;
             default:
                 result = next( action );
