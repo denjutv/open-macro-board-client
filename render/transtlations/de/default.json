@@ -34,5 +34,17 @@
     "buttonSettingsBackgroundColor": "Hintergrundfarbe",
 
     "macroSettingsKey": "Schlüssel",
-    "macroSettingsValue": "Wert"
+    "macroSettingsValue": "Wert",
+
+    "httpMethod": "Methode",
+    "httpMethodGet": "GET",
+    "httpMethodPost": "POST",
+    "httpMethodPut": "PUT",
+    "httpMethodDelete": "DELETE",
+    "httpHeader": "Header",
+    "httpBody": "POST Body",
+    "httpBodyArguemntList": "Formularfelder",
+    "httpBodyPlain": "Plain",
+    "httpArgument": "Formularfelder",
+    "httpPlainBody": "Plain"
 }

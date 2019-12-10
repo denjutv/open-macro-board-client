@@ -4,6 +4,7 @@ import connectionManagerReducer from "./connectionManager";
 import settingsReducer from "./settings";
 import buttonsReducer from "./buttons";
 import buttonSettingsReducer from "./buttonSettings";
+import macrosReducer from "./macros";
 
 export default combineReducers(
 {
@@ -11,5 +12,6 @@ export default combineReducers(
     connectionManager: connectionManagerReducer,
     settings: settingsReducer,
     buttons: buttonsReducer,
-    buttonSettings: buttonSettingsReducer
+    buttonSettings: buttonSettingsReducer,
+    macros: macrosReducer
 });

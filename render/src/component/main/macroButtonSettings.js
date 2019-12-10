@@ -9,6 +9,7 @@ import KeyValueList from "../../container/input/keyValueList";
 
 function MacroButtonSettings(props)
 {
+    console.log(props.macroList);
     const checkboxes = [
         {name:"check1", label:"check1",checked:true},
         {name:"check2", label:"check2",checked:false},
