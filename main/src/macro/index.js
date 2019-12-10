@@ -1,5 +1,7 @@
 const HttpRequest = require( "./httpRequest" );
+const PlaySound = require( "./playSound" );
 
 module.exports = {
-    httpRequest: HttpRequest
+    httpRequest: HttpRequest,
+    playSound: PlaySound
 };
