@@ -43,6 +43,7 @@ function ButtonSettings( props )
                                 </li>
                                 <li className={props.activeTabIndex === 1 ? "isActive" : ""}>
                                     <MacroButtonSettingsContainer button={props.button}
+                                        connection={props.connection}
                                         updateButton={props.updateButton}
                                         updateButtonEx={props.updateButtonEx}
                                         selectedButtonIndex={props.selectedButtonIndex}

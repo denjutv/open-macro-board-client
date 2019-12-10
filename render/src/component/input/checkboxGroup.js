@@ -6,7 +6,7 @@ function CheckboxGroup(props)
     return (
         <div className="deckForm__group">
             <div className="deckForm__head">
-                {props.headline}
+                {props.label}
             </div>
             {
                 props.checkboxes.map( (checkbox) =>

@@ -36,6 +36,7 @@
     "macroSettingsKey": "Key",
     "macroSettingsValue": "Value",
 
+    "httpRequest": "HTTP Request",
     "httpMethod": "method",
     "httpMethodGet": "GET",
     "httpMethodPost": "POST",
@@ -46,5 +47,8 @@
     "httpBodyArguemntList": "form fields",
     "httpBodyPlain": "plain",
     "httpArgument": "form fields",
-    "httpPlainBody": "plain"
+    "httpPlainBody": "plain",
+
+    "playSound": "play sound",
+    "soundFile": "path to file"
 }

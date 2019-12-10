@@ -36,7 +36,7 @@ function KeyValueList(props)
     return (
         <div className="deckForm__group">
             <div className="deckForm__head">
-                {props.headlinePrefix && <span>{props.headlinePrefix}</span>} {props.headline}
+                {props.labelPrefix && <span>{props.labelPrefix}</span>} {props.label}
             </div>
 
             <div className="openTable">

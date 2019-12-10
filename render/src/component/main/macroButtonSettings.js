@@ -9,35 +9,48 @@ import KeyValueList from "../../container/input/keyValueList";
 
 function MacroButtonSettings(props)
 {
-    console.log(props.macroList);
-    const checkboxes = [
-        {name:"check1", label:"check1",checked:true},
-        {name:"check2", label:"check2",checked:false},
-        {name:"check3", label:"check3",checked:true}
-    ];
+    const {t} = props;
 
-    const options = [
-        {name:"check1", label:"check1",value:"1"},
-        {name:"check2", label:"check2",value:"2"},
-        {name:"check3", label:"check3",value:"3"}
-    ];
+    console.log(props.macro);
 
     return (
         <div className="deckBuilder__inner">
 
-            <Text name="Bar" label="Bar" />
+            <Dropdown name="macroType" label={t("macroType")} options={props.macroList} />
 
-            <Dropdown name="foo" label="Foo" options={[{value:0,label:"option1"},{value:1,label:"option2"},{value:2,label:"option3"}]} />
+            {
+                props.macro && 
+                props.macro.dataDefinition.map( (field,i) => {
+                    let markup = null;
+                    switch( field.inputType )
+                    {
+                        case "dropdown":
+                            markup = <Dropdown name={field.name} label={field.label} options={field.options} />;
+                        break;
+                        case "text":
+                            markup = <Text name={field.name} label={field.label} />;
+                        break;
+                        case "textarea":
+                            markup = <Textarea name={field.name} label={field.label} />;
+                        break;
+                        case "checkbox":
+                            markup = <Checkbox name={field.name} label={field.label} />;
+                        break;
+                        case "checkboxGroup":
+                            markup = <CheckboxGroup label={field.label} checkboxes={checkboxes} />;
+                        break;
+                        case "radioGroup":
+                            markup = <RadioGroup label={field.label} name={field.name} options={field.options} />;
+                        break;
+                        case "keyValueList":
+                            markup = <KeyValueList name={field.name} label={field.label} />;
+                        break;
+                    }
 
-            <Textarea name="Test" label="Test" />
+                    return <React.Fragment key={i}>{markup}</React.Fragment>;
+                } )
+            }
 
-            <Checkbox name="mycheck" label="mycheck" />
-
-            <CheckboxGroup headline="Ich bin eine Überschrift!!" checkboxes={checkboxes} />
-
-            <RadioGroup headline="Radio Gaga" name="radioGaga" options={options} />
-
-            <KeyValueList name="list" headline="Wunschliste" />
         </div>
     );
 }

@@ -7,7 +7,8 @@ const mapStateToProps = ( state, ownProps ) =>
 ({
     selectedButtonIndex: state.buttonSettings.selectedButtonIndex,
     activeTabIndex: state.buttonSettings.activeTabIndex,
-    button: state.buttons[ownProps.connection.name][state.buttonSettings.selectedButtonIndex]
+    button: state.buttons[ownProps.connection.name][state.buttonSettings.selectedButtonIndex],
+    connection: ownProps.connection
 });
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>
