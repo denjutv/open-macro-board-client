@@ -15,7 +15,7 @@ function MacroButtonSettings(props)
         {name:"check3", label:"check3",checked:true}
     ];
 
-    const radios = [
+    const options = [
         {name:"check1", label:"check1",value:"1"},
         {name:"check2", label:"check2",value:"2"},
         {name:"check3", label:"check3",value:"3"}
@@ -34,7 +34,7 @@ function MacroButtonSettings(props)
 
             <CheckboxGroup headline="Ich bin eine Überschrift!!" checkboxes={checkboxes} />
 
-            <RadioGroup headline="Radio Gaga" name="radioGaga" radios={radios} />
+            <RadioGroup headline="Radio Gaga" name="radioGaga" options={options} />
 
             <KeyValueList name="list" headline="Wunschliste" />
         </div>

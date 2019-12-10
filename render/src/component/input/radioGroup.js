@@ -20,7 +20,7 @@ function RadioGroup( props )
                 {props.headline}
             </div>
             {
-                props.radios.map( radio =>
+                props.options.map( radio =>
                     <Radio
                         key={radio.name}
                         name={radio.name}
