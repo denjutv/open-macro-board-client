@@ -35,7 +35,8 @@ for( let row=0; row < 3; ++row )
 
                 backgroundColor: "#000000",
 
-                macro: {}
+                macro: {},
+                macroType: ""
             } );
     }
 }

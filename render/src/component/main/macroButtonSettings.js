@@ -6,17 +6,17 @@ import Checkbox from "../../container/input/checkbox";
 import CheckboxGroup from "../input/checkboxGroup";
 import RadioGroup from "../../container/input/radioGroup";
 import KeyValueList from "../../container/input/keyValueList";
+import MacroDropdown from "../input/dropdown";
+
 
 function MacroButtonSettings(props)
 {
     const {t} = props;
 
-    console.log(props.macro);
-
     return (
         <div className="deckBuilder__inner">
 
-            <Dropdown name="macroType" label={t("macroType")} options={props.macroList} />
+            <MacroDropdown name="macroType" value={props.macroType} label={t("macroType")} options={props.macroList} updateInput={props.changeMacroType.bind(null,props.macros, props.macro)} connectionName={props.connectionName} selectedButtonIndex={props.selectedButtonIndex} />
 
             {
                 props.macro && 
