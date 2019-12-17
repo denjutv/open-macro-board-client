@@ -6,7 +6,7 @@ class HttpRequestMacro {
 
     getMetaData() {
         return {
-            name: "httpReqeust",
+            name: "httpRequest",
             label: "httpRequest",
             dataDefinition: [
                 {
