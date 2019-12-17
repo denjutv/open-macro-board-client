@@ -7,7 +7,8 @@
     "build": "webpack --config ./render/webpack.config.js",
     "start": "electron ./main/src",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run build && npm run start"
+    "dev": "npm run build && npm run start",
+    "postinstall": "cd ./node_modules/conditions-lang && npm install && npm run build:prod"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   "homepage": "https://github.com/denjutv/open-macro-board-client#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "conditions-lang": "^1.0.1",
     "configstore": "^4.0.0",
     "css-loader": "^3.0.0",
     "electron": "^4.1.0",
@@ -39,7 +41,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "copy-webpack-plugin": "^5.0.3",
+    "copy-webpack-plugin": "^5.1.1",
     "html-webpack-plugin": "^3.2.0",
     "i18next": "^17.0.3",
     "react": "^16.8.4",

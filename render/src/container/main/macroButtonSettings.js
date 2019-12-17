@@ -2,12 +2,19 @@ import { connect } from "react-redux";
 import { withTranslation } from "react-i18next";
 import MacroButtonSettings from "../../component/main/macroButtonSettings";
 import { updateButton } from "../../action/";
+import conditionRunner from "conditions-lang";
 
 const mapStateToProps = ( state, ownProps ) => {
     const button = state.buttons[ownProps.connection.name][state.buttonSettings.selectedButtonIndex];
     const macroType = button.macroType;
+    let macro = macroType ? getMacro( state.macros, macroType ) : null;
+    if( macro )
+    {
+        macro = parseMacoConditions( macro, button.macro );
+    }
+
     return {
-        macro: macroType ? getMacro( state.macros, macroType ) : null,
+        macro,
         macros: state.macros,
         macroList: getMacroList(state.macros, ownProps.t),
         macroType,
@@ -30,6 +37,29 @@ function getMacro( macros, macroType )
         }
     }
 
+    return macro;
+}
+
+function parseMacoConditions( macro, currentMacro )
+{
+    macro = Object.assign( {}, macro );
+    macro.dataDefinition  = macro.dataDefinition.slice();
+
+    for( var i=0; i < macro.dataDefinition.length; ++i )
+    {
+        const definition = Object.assign( {}, macro.dataDefinition[i] );
+
+        if( definition.condition )
+        {
+            definition.isVisible = conditionRunner( definition.condition, currentMacro );
+        }
+        else {
+            definition.isVisible = true;
+        }
+
+        macro.dataDefinition[i] = definition;
+    }
+    
     return macro;
 }
 

@@ -43,14 +43,14 @@ class HttpRequestMacro {
                     name: "argument",
                     label: "httpArgument",
                     default: [],
-                    condition: "body==arguments"
+                    condition: "method==get||method==delete||body==arguments"
                 },
                 {
                     inputType: "textarea",
                     name: "plainBody",
                     label: "httpPlainBody",
                     default: "",
-                    condition: "body==plain"
+                    condition: "(method==post||method==put)&&body==plain"
                 }
             ]
         }

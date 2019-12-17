@@ -20,31 +20,34 @@ function MacroButtonSettings(props)
 
             {
                 props.macro && 
-                props.macro.dataDefinition.map( (field,i) => {
+                props.macro.dataDefinition.map( (definition,i) => {
                     let markup = null;
-                    switch( field.inputType )
+                    if( definition.isVisible )
                     {
-                        case "dropdown":
-                            markup = <Dropdown name={field.name} label={field.label} options={field.options} />;
-                        break;
-                        case "text":
-                            markup = <Text name={field.name} label={field.label} />;
-                        break;
-                        case "textarea":
-                            markup = <Textarea name={field.name} label={field.label} />;
-                        break;
-                        case "checkbox":
-                            markup = <Checkbox name={field.name} label={field.label} />;
-                        break;
-                        case "checkboxGroup":
-                            markup = <CheckboxGroup label={field.label} checkboxes={checkboxes} />;
-                        break;
-                        case "radioGroup":
-                            markup = <RadioGroup label={field.label} name={field.name} options={field.options} />;
-                        break;
-                        case "keyValueList":
-                            markup = <KeyValueList name={field.name} label={field.label} />;
-                        break;
+                        switch( definition.inputType )
+                        {
+                            case "dropdown":
+                                markup = <Dropdown name={definition.name} label={definition.label} options={definition.options} />;
+                            break;
+                            case "text":
+                                markup = <Text name={definition.name} label={definition.label} />;
+                            break;
+                            case "textarea":
+                                markup = <Textarea name={definition.name} label={definition.label} />;
+                            break;
+                            case "checkbox":
+                                markup = <Checkbox name={definition.name} label={definition.label} />;
+                            break;
+                            case "checkboxGroup":
+                                markup = <CheckboxGroup label={definition.label} checkboxes={checkboxes} />;
+                            break;
+                            case "radioGroup":
+                                markup = <RadioGroup label={definition.label} name={definition.name} options={definition.options} />;
+                            break;
+                            case "keyValueList":
+                                markup = <KeyValueList name={definition.name} label={definition.label} />;
+                            break;
+                        }
                     }
 
                     return <React.Fragment key={i}>{markup}</React.Fragment>;
