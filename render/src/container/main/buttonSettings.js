@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import ButtonSettings from "../../component/main/buttonSettings";
 import { updateButton, settingsSetActiveTab } from "../../action/";
-import { remote } from "electron"
+const {remote} = window.electron;
 
 const mapStateToProps = ( state, ownProps ) =>
 ({

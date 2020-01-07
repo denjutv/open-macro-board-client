@@ -1,4 +1,3 @@
-import electron from "electron";
 import { CONFIG_CONNECTION_SAVE, GET_SETTINGS, CONNECTION_REMOVE } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
 import translator from "../translator";

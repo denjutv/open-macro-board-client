@@ -1,4 +1,3 @@
-import electron from "electron";
 import { SET_CURRENT_CONNECTION } from "../action/";
 import { CONFIG_CONNECTION_SAVE, SET_SETTINGS } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";

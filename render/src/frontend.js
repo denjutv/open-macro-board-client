@@ -8,8 +8,7 @@ import connectionMiddleware from "./middleware/connection";
 import connectionManagerMiddleware from "./middleware/connectionManager";
 import buttonsMiddleware from "./middleware/buttons";
 import { MAIN_RENDER_CHANNEL, RENDER_DID_FINISH_LOAD } from "../../shared/channel";
-import electron from "electron";
-
+ 
 /**
  * Main frontend class, that creates and holds the store, requests the button settings from the main process and starts the rendering.
  */

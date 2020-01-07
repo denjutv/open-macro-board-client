@@ -1,4 +1,3 @@
-import electron from "electron";
 import { UPDATE_BUTTON } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
 import { UPDATE_MACRO_INPUT } from "../action/";

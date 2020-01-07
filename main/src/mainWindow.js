@@ -8,14 +8,19 @@ class MainWindow
     create( displaySettings, showDevTools )
     {
         const { BrowserWindow } = require( "electron" );
+        const path = require( "path" );
 
         this.win = new BrowserWindow({
             width: displaySettings.width,
             height: displaySettings.height,
-            transparent: false
+            transparent: false,
+            webPreferences: {
+                nodeIntegration: false,
+                contextIsolation: false,
+                preload: path.join( __dirname, "preload.js" )
+            }
         });
     
-        const path = require( "path" );
         this.win.loadFile( path.join( __dirname, "..", "..", "render", "dist", "index.html" ) );
 
         if( displaySettings.fullscreen )
