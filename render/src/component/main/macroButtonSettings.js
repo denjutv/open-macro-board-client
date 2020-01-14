@@ -7,7 +7,7 @@ import CheckboxGroup from "../input/checkboxGroup";
 import RadioGroup from "../../container/input/radioGroup";
 import KeyValueList from "../../container/input/keyValueList";
 import MacroDropdown from "../input/dropdown";
-
+import Footer from "../../container/main/buttonSettingsFooter";
 
 function MacroButtonSettings(props)
 {
@@ -54,6 +54,7 @@ function MacroButtonSettings(props)
                 } )
             }
 
+            <Footer />
         </div>
     );
 }

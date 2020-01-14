@@ -31,7 +31,7 @@ function Board( props )
                                         isSelected={props.selectedButtonIndex === index}
                                         button={button}
                                         index={index}
-                                        selectButton={props.selectButton}
+                                        selectButton={props.selectButton.bind(null,props.connection.name)}
                                     />
                                 )
                             }

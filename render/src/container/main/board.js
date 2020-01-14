@@ -11,7 +11,7 @@ const mapStateToProps = ( state, ownProps ) =>
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>
 ({
-    selectButton: index => dispatch( selectButton(index) )
+    selectButton: (connectionName,index) => dispatch( selectButton(index, connectionName) )
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )( Board );

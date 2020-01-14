@@ -1,10 +1,11 @@
 export const SELECT_BUTTON = "SELECT_BUTTON";
 
-export const selectButton = index =>
+export const selectButton = (index,connectionName) =>
 {
     return {
         type: SELECT_BUTTON,
-        index
+        index,
+        connectionName
     }
 }
 
@@ -40,5 +41,16 @@ export const updateMacroInput = (connectionName, index, event ) =>
         connectionName,
         index,
         event
+    }
+}
+
+export const RESET_BUTTON = "RESET_BUTTON";
+
+export const resetButton = ( connectionName, index ) =>
+{
+    return {
+        type: RESET_BUTTON,
+        connectionName,
+        index
     }
 }

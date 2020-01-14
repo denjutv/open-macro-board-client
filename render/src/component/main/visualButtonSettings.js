@@ -1,6 +1,7 @@
 import React from "react";
 import { withTranslation } from "react-i18next";
 import { SketchPicker } from 'react-color';
+import Footer from "../../container/main/buttonSettingsFooter";
 
 function VisualButtonSettings(props)
 {
@@ -87,7 +88,8 @@ function VisualButtonSettings(props)
                 </div>
 
             </div>
-
+            
+            <Footer />
         </div>
     );
 }
