@@ -6,7 +6,8 @@ const mapStateToProps = ( state, ownProps ) =>
 ({
     selectedButtonIndex: state.buttonSettings.selectedButtonIndex,
     connection: ownProps.connection,
-    isButtonChanged: state.buttons.isButtonChanged
+    isButtonChanged: state.buttons.isButtonChanged,
+    connection: ownProps.connection
 });
 
 const mapDispatchToProps = ( dispatch, ownProps ) =>

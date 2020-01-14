@@ -54,7 +54,7 @@ function MacroButtonSettings(props)
                 } )
             }
 
-            <Footer />
+            <Footer connection={props.connection} />
         </div>
     );
 }

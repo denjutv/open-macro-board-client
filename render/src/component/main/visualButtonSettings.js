@@ -89,7 +89,7 @@ function VisualButtonSettings(props)
 
             </div>
             
-            <Footer />
+            <Footer connection={props.connection} />
         </div>
     );
 }

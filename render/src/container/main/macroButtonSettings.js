@@ -20,7 +20,8 @@ const mapStateToProps = ( state, ownProps ) => {
         macroType,
         t: ownProps.t,
         connectionName: ownProps.connection.name,
-        selectedButtonIndex:state.buttonSettings.selectedButtonIndex
+        selectedButtonIndex:state.buttonSettings.selectedButtonIndex,
+        connection: ownProps.connection
     }
 };
 

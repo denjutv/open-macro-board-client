@@ -46,6 +46,9 @@ export const updateMacroInput = (connectionName, index, event ) =>
 
 export const RESET_BUTTON = "RESET_BUTTON";
 
+/**
+ * TODO: at the moment RESET_BUTTON only updates the reducer, but changes still apply to the config!!!
+ */
 export const resetButton = ( connectionName, index ) =>
 {
     return {
