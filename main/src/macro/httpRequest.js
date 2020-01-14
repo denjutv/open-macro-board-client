@@ -10,6 +10,12 @@ class HttpRequestMacro {
             label: "httpRequest",
             dataDefinition: [
                 {
+                    inputType: "text",
+                    name: "url",
+                    label: "url",
+                    default: ""
+                },
+                {
                     inputType: "radioGroup",
                     name: "method",
                     label: "httpMethod",
