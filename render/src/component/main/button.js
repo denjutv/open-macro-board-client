@@ -1,5 +1,4 @@
 import React from "react";
-import board from "../../container/main/board";
 
 function Button( props )
 {
