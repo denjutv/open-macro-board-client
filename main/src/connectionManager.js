@@ -143,7 +143,7 @@ class ConnectionManager
 
         socket.on( "action", ( action ) =>
         {
-            dispatch( action );
+            dispatch( Object.assign( action, {connectionName: connectionData.name }) );
         });
 
         socket.on( "connect", ( ) =>
