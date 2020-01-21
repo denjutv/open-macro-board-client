@@ -75,6 +75,10 @@ function saveButton( connection, action )
         // && typeof buttons[action.index][action.field] !== "undefined"
         )
     {
+        if( buttons[action.index].iconPath !== action.button.iconPath )
+        {
+            sendIconToBoard( connection.connectionData, action.index, action.button.iconPath );
+        }
         buttons[action.index] = action.button;
         buttons[action.index].isUsed = true;
         app.connectionManager.saveToConfig();
