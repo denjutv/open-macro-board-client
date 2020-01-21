@@ -10,7 +10,7 @@ class HttpRequestMacro {
             label: "playSound",
             dataDefinition: [
                 {
-                    inputType: "text",
+                    inputType: "file",
                     name: "soundFile",
                     label: "soundFile",
                     default: ""

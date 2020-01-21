@@ -1,6 +1,7 @@
 import React from "react";
 import Dropdown from "../../container/input/dropdown";
 import Text from "../../container/input/text";
+import File from "../../container/input/file";
 import Textarea from "../../container/input/textarea";
 import Checkbox from "../../container/input/checkbox";
 import CheckboxGroup from "../input/checkboxGroup";
@@ -31,6 +32,9 @@ function MacroButtonSettings(props)
                             break;
                             case "text":
                                 markup = <Text name={definition.name} label={definition.label} />;
+                            break;
+                            case "file":
+                                markup = <File name={definition.name} label={definition.label} />;
                             break;
                             case "textarea":
                                 markup = <Textarea name={definition.name} label={definition.label} />;
