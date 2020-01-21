@@ -1,5 +1,5 @@
 const { UPDATE_BUTTON, SAVE_BUTTON } = require( "../../../../shared/actionType" );
-const { BUTTON_PRESSED, BUTTONS_UPDATE } = require( "../../action/" );
+const { BUTTON_PRESSED, BUTTONS_UPDATE, updateButtons } = require( "../../action/" );
 const app = require( "../../app" );
 
 
@@ -36,6 +36,10 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
             case SAVE_BUTTON:
                 connection = app.connectionManager.getConnectionByName( action.connectionName );
                 saveButton(connection, action);
+
+                // send button data to board
+                dispatch(updateButtons( action.connectionName, connection.buttons ) );
+
                 result = next( action );
                 break;
             default:
