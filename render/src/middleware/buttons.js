@@ -1,4 +1,4 @@
-import { UPDATE_BUTTON } from "../../../shared/actionType";
+import { UPDATE_BUTTON, SAVE_BUTTON } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
 import { UPDATE_MACRO_INPUT } from "../action/";
 
@@ -29,9 +29,12 @@ const buttonsMiddleware = ( { getState, dispatch } ) =>
                     //&& typeof state.buttons[action.connectionName][action.index][action.field] !== "undefined"
                     )
                 {
-                    electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, action );
                     result = next( action );
                 }
+            break;
+            case SAVE_BUTTON:
+                electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, action );
+                result = next( action );
             break;
             default:
                 result = next( action );

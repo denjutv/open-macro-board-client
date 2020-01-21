@@ -1,5 +1,5 @@
 import { SELECT_BUTTON, RESET_BUTTON } from "../action/";
-import { CONNECTION_ADD, CONNECTION_REMOVE, UPDATE_BUTTON } from "../../../shared/actionType";
+import { CONNECTION_ADD, CONNECTION_REMOVE, UPDATE_BUTTON, SAVE_BUTTON } from "../../../shared/actionType";
 import equal from "fast-deep-equal";
 
 export const CURRENT_BUTTON_COPY = "CURRENT_BUTTON_COPY";
@@ -25,10 +25,16 @@ const buttonReducer = ( state = {CURRENT_BUTTON_COPY: {}, isButtonChanged: false
 
             break;
         case SELECT_BUTTON:
+        case SAVE_BUTTON:
+
             newState = Object.assign( {}, state );
             newState[CURRENT_BUTTON_COPY] = Object.assign( {}, state[CURRENT_BUTTON_COPY] );
             newState[CURRENT_BUTTON_COPY][action.connectionName] = Object.assign({}, newState[action.connectionName][action.index] );
 
+            if( action.type === SAVE_BUTTON )
+            {
+                newState.isButtonChanged = false;
+            }
             break;
         case RESET_BUTTON:
             newState = Object.assign( {}, state );

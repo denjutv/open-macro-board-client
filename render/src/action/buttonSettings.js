@@ -44,6 +44,18 @@ export const updateMacroInput = (connectionName, index, event ) =>
     }
 }
 
+import { SAVE_BUTTON } from "../../../shared/actionType";
+
+export const saveButton = ( connectionName, index, button ) =>
+{
+    return {
+        type: SAVE_BUTTON,
+        connectionName,
+        index,
+        button
+    }
+}
+
 export const RESET_BUTTON = "RESET_BUTTON";
 
 /**

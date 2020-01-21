@@ -1,4 +1,4 @@
-const { UPDATE_BUTTON } = require( "../../../../shared/actionType" );
+const { UPDATE_BUTTON, SAVE_BUTTON } = require( "../../../../shared/actionType" );
 const { BUTTON_PRESSED, BUTTONS_UPDATE } = require( "../../action/" );
 const app = require( "../../app" );
 
@@ -29,6 +29,15 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
             case UPDATE_BUTTON:
                 connection = app.connectionManager.getConnectionByName( action.connectionName );
                 updateButton(connection, action);
+                
+                result = next( action );
+                break;
+
+            case SAVE_BUTTON:
+                connection = app.connectionManager.getConnectionByName( action.connectionName );
+                saveButton(connection, action);
+                result = next( action );
+                break;
             default:
                 result = next( action );
         }
@@ -49,6 +58,20 @@ function updateButton( connection, action )
             sendIconToBoard( connection.connectionData, action.index, action.value );
         }
         buttons[action.index][action.field] = action.value;
+        buttons[action.index].isUsed = true;
+        app.connectionManager.saveToConfig();
+    }
+}
+
+function saveButton( connection, action )
+{
+    const buttons = connection.buttons;
+
+    if( typeof buttons[action.index] !== "undefined"
+        // && typeof buttons[action.index][action.field] !== "undefined"
+        )
+    {
+        buttons[action.index] = action.button;
         buttons[action.index].isUsed = true;
         app.connectionManager.saveToConfig();
     }
