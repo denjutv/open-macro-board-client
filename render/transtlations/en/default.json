@@ -32,6 +32,7 @@
     "buttonSettingsVisualsTab": "Visuals",
     "buttonSettingsMacroTab": "Macro",
     "buttonSettingsBackgroundColor": "Background Color",
+    "buttonSettingsSaveUnchagedDialog": "Unsaved changes! Do you want to save your unchanged data?",
 
     "macroSettingsKey": "Key",
     "macroSettingsValue": "Value",

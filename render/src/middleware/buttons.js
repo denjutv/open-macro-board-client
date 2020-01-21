@@ -1,7 +1,7 @@
 import { UPDATE_BUTTON, SAVE_BUTTON } from "../../../shared/actionType";
 import { MAIN_RENDER_CHANNEL } from "../../../shared/channel";
-import { UPDATE_MACRO_INPUT } from "../action/";
-
+import { UPDATE_MACRO_INPUT, SELECT_BUTTON, saveButton } from "../action/";
+import translator from "../translator";
 
 /**
  * Middleware that listens for CONFIG_CONNECTION_SAVE event to pass that event via ipc to the main process.
@@ -36,6 +36,23 @@ const buttonsMiddleware = ( { getState, dispatch } ) =>
                 electron.ipcRenderer.send( MAIN_RENDER_CHANNEL, action );
                 result = next( action );
             break;
+            case SELECT_BUTTON:
+                if( state.buttons.isButtonChanged )
+                {
+                    const isConfirmed = confirm( translator.t("buttonSettingsSaveUnchagedDialog") );
+
+                    if( isConfirmed )
+                    {
+                        const button = state.buttons[action.connectionName][state.buttonSettings.selectedButtonIndex];
+                        dispatch( saveButton( action.connectionName, state.buttonSettings.selectedButtonIndex, button ) );
+                        result = next( action );
+                    }
+                }
+                else
+                {
+                    result = next( action );
+                }
+                break;
             default:
                 result = next( action );
         }

@@ -32,6 +32,7 @@
     "buttonSettingsVisualsTab": "Aussehen",
     "buttonSettingsMacroTab": "Parameter",
     "buttonSettingsBackgroundColor": "Hintergrundfarbe",
+    "buttonSettingsSaveUnchagedDialog": "Ungespeicherte Änderungen! Möchten Sie die ungespeicherten Änderungen speichern?",
 
     "macroSettingsKey": "Schlüssel",
     "macroSettingsValue": "Wert",
