@@ -17,7 +17,9 @@ const connectionMiddleware = ( { getState, dispatch } ) =>
         switch( action.type )
         {
             case BUTTON_PRESSED:
-                console.log( action.buttonIndex );
+                // console.log(action);
+                connection = app.connectionManager.getConnectionByName( action.connectionName );
+                handleMacro( connection, action.buttonIndex, getState() );
                 break;
             case BUTTONS_UPDATE:
                 console.log( "send to board" );
@@ -121,6 +123,24 @@ async function sendIconToBoard( connectionData, buttonIndex, pathToIcon )
         else
         {
             console.log( error );
+        }
+    }
+}
+
+function handleMacro( connection, buttonIndex, state )
+{
+    const buttons = connection.buttons;
+
+    if( typeof buttons[buttonIndex] !== "undefined"
+        // && typeof buttons[buttonIndex][action.field] !== "undefined"
+        )
+    {
+        const button = buttons[buttonIndex];
+
+        if( app.macroMap.hasOwnProperty( button.macroType ) )
+        {
+            macro = app.macroMap[button.macroType];
+            macro.execute( button.macro );
         }
     }
 }

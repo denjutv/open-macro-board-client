@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import connectionMiddleware from "./middleware/connection";
 import connectionManagerMiddleware from "./middleware/connectionManager";
 import buttonsMiddleware from "./middleware/buttons";
+import soundMiddleware from "./middleware/sound";
 import { MAIN_RENDER_CHANNEL, RENDER_DID_FINISH_LOAD } from "../../shared/channel";
  
 /**
@@ -27,7 +28,7 @@ class Frontend
     init( contentElement )
     {
         // create store
-        this.store = createStore( rootReducer, applyMiddleware( connectionMiddleware, connectionManagerMiddleware, buttonsMiddleware ) );
+        this.store = createStore( rootReducer, applyMiddleware( connectionMiddleware, connectionManagerMiddleware, buttonsMiddleware, soundMiddleware ) );
 
         // // set up ipc handler
         // // handle ipc message by dispatching them to the store
