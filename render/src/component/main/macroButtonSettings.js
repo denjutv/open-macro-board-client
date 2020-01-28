@@ -28,28 +28,28 @@ function MacroButtonSettings(props)
                         switch( definition.inputType )
                         {
                             case "dropdown":
-                                markup = <Dropdown name={definition.name} label={definition.label} options={definition.options} />;
+                                markup = <Dropdown {...definition} />;
                             break;
                             case "text":
-                                markup = <Text name={definition.name} label={definition.label} />;
+                                markup = <Text {...definition} />;
                             break;
                             case "file":
-                                markup = <File name={definition.name} label={definition.label} />;
+                                markup = <File {...definition} />;
                             break;
                             case "textarea":
-                                markup = <Textarea name={definition.name} label={definition.label} />;
+                                markup = <Textarea {...definition} />;
                             break;
                             case "checkbox":
-                                markup = <Checkbox name={definition.name} label={definition.label} />;
+                                markup = <Checkbox {...definition} />;
                             break;
                             case "checkboxGroup":
-                                markup = <CheckboxGroup label={definition.label} checkboxes={checkboxes} />;
+                                markup = <CheckboxGroup {...definition} checkboxes={checkboxes} />;
                             break;
                             case "radioGroup":
-                                markup = <RadioGroup label={definition.label} name={definition.name} options={definition.options} />;
+                                markup = <RadioGroup {...definition} />;
                             break;
                             case "keyValueList":
-                                markup = <KeyValueList name={definition.name} label={definition.label} />;
+                                markup = <KeyValueList {...definition} />;
                             break;
                         }
                     }
