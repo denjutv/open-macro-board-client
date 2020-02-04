@@ -7,6 +7,7 @@ import Checkbox from "../../container/input/checkbox";
 import CheckboxGroup from "../input/checkboxGroup";
 import RadioGroup from "../../container/input/radioGroup";
 import KeyValueList from "../../container/input/keyValueList";
+import Password from "../../container/input/password";
 import MacroDropdown from "../input/dropdown";
 import Footer from "../../container/main/buttonSettingsFooter";
 
@@ -50,6 +51,9 @@ function MacroButtonSettings(props)
                             break;
                             case "keyValueList":
                                 markup = <KeyValueList {...definition} />;
+                            break;
+                            case "password":
+                                markup = <Password {...definition} />;
                             break;
                         }
                     }
