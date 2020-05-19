@@ -60,7 +60,7 @@ const buttonReducer = ( state = {CURRENT_BUTTON_COPY: {}, isButtonChanged: false
             newState.isButtonChanged = !equal( newState[action.connectionName][action.index], state[CURRENT_BUTTON_COPY][action.connectionName] )
             break;
     }
-console.log(newState);
+
     return newState;
 };
 
