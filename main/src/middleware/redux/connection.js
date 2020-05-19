@@ -57,7 +57,7 @@ function addConnection( action, dispatch, next )
     const  newAction = {};
     let result = null;
 
-    if( app.connectionManager.addConnection( action.currentConnection, action.buttons, dispatch, action.event.sender ) )
+    if( action.refresh || app.connectionManager.addConnection( action.currentConnection, action.buttons, dispatch, action.event.sender ) )
     {
         newAction.type = CONNECTION_ADD;
         newAction.connection = Object.assign( {}, action.currentConnection );

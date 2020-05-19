@@ -34,7 +34,7 @@ class ConnectionManager
         return this.connections.hasOwnProperty( name );
     }
 
-    loadConnections( config, store, sender )
+    loadConnections( config, store, sender, refresh=false )
     {
         this.config = config;
 
@@ -55,7 +55,8 @@ class ConnectionManager
                     isNewConnection: true,
                     event: {
                         sender
-                    }
+                    },
+                    refresh
                 });
             }
         }

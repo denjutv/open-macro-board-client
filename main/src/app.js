@@ -87,10 +87,12 @@ class App
             this.store.dispatch( Object.assign( message, {event} ) );
         });
 
+        let isLoaded = false;
         ipcMain.on( RENDER_DID_FINISH_LOAD, ( event, message ) =>
         {
-            this.connectionManager.loadConnections( this.conf, this.store, this.mainWindow.getSender() );
-
+            this.connectionManager.loadConnections( this.conf, this.store, this.mainWindow.getSender(), isLoaded );
+            isLoaded = true;
+            
             // send settings to render process
             const objFilter = require( "./objFilter" );
             const {sendSettings, sendMacroMetaData} = require("./action/");
